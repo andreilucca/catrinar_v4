@@ -121,7 +121,8 @@
   .explore:hover i{transform:translateX(5px)}
   .explore-row{margin-top:30px}
   .mech{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:20px 0 0}
-  .mech .mline{position:absolute;left:11%;right:11%;top:27px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--aur1),var(--aur2),var(--aur1));background-size:200% 100%;animation:flowdash 2.2s linear infinite}
+  .mech .mline{position:absolute;left:11%;right:11%;top:27px;height:2.5px;border-radius:3px;background:rgba(43,39,68,.1);overflow:hidden}
+  .mech .mline::before{content:"";position:absolute;inset:0;width:var(--p,0%);border-radius:inherit;background:linear-gradient(90deg,#19b3a6,#3f9ccf,#6a76e3,#7a55e8);box-shadow:0 0 8px rgba(122,85,232,.5)}
   @keyframes flowdash{to{background-position:-200% 0}}
   .mnode{display:flex;flex-direction:column;align-items:center;text-align:center;gap:7px;position:relative;z-index:1}
   .mnode b{font-family:"Unbounded",sans-serif;font-weight:600;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;height:14px}
@@ -161,7 +162,8 @@
   .crun-halo{fill:rgba(122,85,232,.22)}
   .mnode i{transition:transform .3s ease}
   .mnode.live i{transform:scale(1.45);box-shadow:0 0 0 7px rgba(122,180,240,.16)}
-  .mnode.live b{background:linear-gradient(92deg,var(--aur1),var(--aur2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .mnode b{display:inline-block}
+  .mnode.live b{background:linear-gradient(92deg,var(--aur1),var(--aur2));-webkit-background-clip:text;background-clip:text;color:transparent;animation:lbload .85s cubic-bezier(.2,.7,.2,1)}
   .aud{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
   @media (max-width:720px){.aud{grid-template-columns:1fr}}
   .aud-c{display:flex;flex-direction:column;gap:6px;text-align:left;border:1px solid var(--hair);background:rgba(43,39,68,.04);border-radius:14px;padding:13px 14px;color:var(--fog);text-decoration:none;cursor:pointer;transition:border-color .2s ease,transform .2s ease,background .2s ease}
@@ -179,9 +181,19 @@
   .loop .ln{transform-box:fill-box;transform-origin:center;transition:transform .25s ease}
   .loop .ln{transition:transform .25s ease,filter .35s ease}
   .loop .ln.live{transform:scale(1.7)}
-  .ltrail{filter:drop-shadow(0 0 6px rgba(122,85,232,.4));transition:stroke .5s ease}
-  .loop .lb.lbload{animation:lbload .85s cubic-bezier(.2,.7,.2,1)}
+  .ltrail,.ctrail{filter:drop-shadow(0 0 6px rgba(122,85,232,.4));transition:stroke .5s ease}
+  .loop .lb.lbload,.door .db.lbload{animation:lbload .85s cubic-bezier(.2,.7,.2,1)}
   @keyframes lbload{0%{opacity:.25;transform:scale(.9)}55%{opacity:1;transform:scale(1.2)}100%{transform:scale(1)}}
+  .dwing{transform-box:fill-box;transform-origin:left center;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  #doorSvg.open .dwing{transform:translateX(-9px) scaleX(.22)}
+  .dlight{opacity:0;transition:opacity .4s ease}
+  #doorSvg.open .dlight{opacity:.9;filter:drop-shadow(0 0 8px rgba(255,216,77,.9))}
+  .dportal{transform-box:fill-box;transform-origin:center;transition:transform .35s ease,stroke .35s ease}
+  .dportal.pulse{transform:scale(1.12);stroke:#7a55e8;filter:drop-shadow(0 0 10px rgba(122,85,232,.5))}
+  .dcirc{transition:opacity .35s ease,fill .35s ease;stroke-width:2.5}
+  .dcore{transition:opacity .3s ease,fill .35s ease;filter:drop-shadow(0 0 5px rgba(255,216,77,.6))}
+  .dcap{transform-box:fill-box;transform-origin:center;transform:translateY(-18px) scale(.5);opacity:0;transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s ease}
+  .dcap.set{transform:none;opacity:1}
   .door .db,.loop .lb,.curve .clab{pointer-events:auto;cursor:default;transform-box:fill-box;transform-origin:center;transition:transform .25s ease}
   .door .db:hover,.loop .lb:hover,.curve .clab:hover{transform:translateY(-3px) scale(1.3)}
   .door:hover svg,.loop:hover svg,.curve:hover svg{filter:drop-shadow(0 6px 16px rgba(122,85,232,.22))}
@@ -485,21 +497,27 @@
           <h2 class="fx">Learning that <span class="grad">travels</span></h2>
           <p class="lede fx d1">Movement is the Trojan Horse. A meaningful experience gets learners through the door; inside it we hide concepts. Then we change the context and ask: can you use what you understood somewhere else?</p>
           <div class="door fx d1" aria-label="The Trojan Horse mechanism: experience carries concepts through the door, understanding travels, capabilities remain">
-            <svg id="doorSvg" viewBox="0 0 520 150">
-              <defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#19b3a6"/><stop offset="1" stop-color="#7a55e8"/></linearGradient></defs>
-              <line x1="22" y1="70" x2="498" y2="70" stroke="rgba(43,39,68,.16)" stroke-width="1.5"/>
-              <rect x="146" y="32" width="9" height="76" rx="4" fill="url(#dg)" opacity=".9"/>
-              <text x="150" y="24" text-anchor="middle" fill="#8b86a3" font-size="8" letter-spacing="2" font-family="Figtree,sans-serif">THE DOOR</text>
-              <line x1="332" y1="36" x2="332" y2="104" stroke="rgba(43,39,68,.3)" stroke-width="1.5" stroke-dasharray="4 5"/>
-              <text x="332" y="24" text-anchor="middle" fill="#8b86a3" font-size="8" letter-spacing="2" font-family="Figtree,sans-serif">NEW CONTEXT</text>
-              <text class="db" data-ph="0" x="82" y="116" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">EXPERIENCE</text>
-              <text class="db" data-ph="1" x="242" y="116" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">CONCEPTS</text>
-              <text class="db" data-ph="2" x="392" y="116" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">TRANSFER</text>
-              <text class="db" data-ph="3" x="478" y="116" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">REMAIN</text>
-              <text x="82" y="132" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">opens the door</text>
-              <text x="242" y="132" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">create meaning</text>
-              <text x="392" y="132" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">understanding travels</text>
-              <text x="478" y="132" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">capabilities stay</text>
+            <svg id="doorSvg" viewBox="0 0 560 170">
+              <defs>
+                <linearGradient id="dg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#19b3a6"/><stop offset="1" stop-color="#7a55e8"/></linearGradient>
+                <linearGradient id="dgv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#19b3a6"/><stop offset="1" stop-color="#7a55e8"/></linearGradient>
+              </defs>
+              <line x1="24" y1="78" x2="536" y2="78" stroke="rgba(43,39,68,.14)" stroke-width="1.5"/>
+              <text x="152" y="26" text-anchor="middle" fill="#8b86a3" font-size="8" letter-spacing="2" font-family="Figtree,sans-serif">THE DOOR</text>
+              <rect x="141" y="34" width="22" height="88" rx="7" fill="rgba(255,255,255,.55)" stroke="url(#dgv)" stroke-width="2"/>
+              <rect class="dlight" x="146" y="38" width="12" height="80" rx="4" fill="#ffd84d"/>
+              <rect class="dwing" x="145" y="37" width="14" height="82" rx="4" fill="url(#dgv)"/>
+              <text x="300" y="26" text-anchor="middle" fill="#8b86a3" font-size="8" letter-spacing="2" font-family="Figtree,sans-serif">NEW CONTEXT</text>
+              <ellipse class="dportal" cx="300" cy="78" rx="17" ry="46" fill="rgba(122,85,232,.05)" stroke="rgba(43,39,68,.35)" stroke-width="1.5" stroke-dasharray="4 5"/>
+              <line x1="446" y1="97" x2="538" y2="97" stroke="rgba(43,39,68,.3)" stroke-width="2" stroke-linecap="round"/>
+              <text class="db" data-ph="0" x="80" y="124" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">EXPERIENCE</text>
+              <text class="db" data-ph="1" x="225" y="124" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">CONCEPTS</text>
+              <text class="db" data-ph="2" x="370" y="124" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">TRANSFER</text>
+              <text class="db" data-ph="3" x="492" y="124" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">REMAIN</text>
+              <text x="80" y="140" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">opens the door</text>
+              <text x="225" y="140" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">create meaning</text>
+              <text x="370" y="140" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">understanding travels</text>
+              <text x="492" y="140" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">capabilities stay</text>
             </svg>
           </div>
           <div class="skills fx d2">
@@ -1400,84 +1418,154 @@
     dot.setAttribute('class', 'crun');
     svg.appendChild(dot);
     var nodes = document.querySelectorAll('#s3 .mech .mnode');
+    var mline = document.querySelector('#s3 .mech .mline');
+    var COLS = ['#19b3a6', '#3f9ccf', '#6a76e3', '#7a55e8'];
     var L = path.getTotalLength();
+    var trail = document.createElementNS(NS, 'path');
+    trail.setAttribute('d', path.getAttribute('d'));
+    trail.setAttribute('fill', 'none');
+    trail.setAttribute('stroke-width', '4.5');
+    trail.setAttribute('stroke-linecap', 'round');
+    trail.setAttribute('stroke-dasharray', L);
+    trail.setAttribute('class', 'ctrail');
+    svg.insertBefore(trail, halo);
+    var lastStage = -1;
     function place(t){
       var pt = path.getPointAtLength(t * L);
       dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y);
       halo.setAttribute('cx', pt.x); halo.setAttribute('cy', pt.y);
+      var stage = Math.min(3, Math.floor(t * 4));
+      trail.setAttribute('stroke', COLS[stage]);
+      trail.setAttribute('stroke-dashoffset', L * (1 - t));
+      if (mline) mline.style.setProperty('--p', (t * 100).toFixed(1) + '%');
+      if (stage !== lastStage) {
+        lastStage = stage;
+        nodes.forEach(function(n, k){
+          n.classList.toggle('live', k === stage);
+          var i2 = n.querySelector('i');
+          if (i2) i2.style.boxShadow = k === stage ? '0 0 0 7px ' + COLS[stage] + '29, 0 0 14px ' + COLS[stage] + '66' : '';
+        });
+      }
     }
     if (reduce) {
-      place(1);
+      place(0.999);
       nodes.forEach(function(n){ n.classList.add('live'); });
       return;
     }
     var start = null;
     function frame(ts){
       if (!start) start = ts;
-      var t = ((ts - start) % 6400) / 6400;
-      place(t);
-      var stage = Math.min(3, Math.floor(t * 4));
-      nodes.forEach(function(n, k){ n.classList.toggle('live', k === stage); });
+      place(((ts - start) % 6400) / 6400);
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   })();
 
-  // s1: the Trojan Horse run, a spark crosses the door, changes shape, and deposits a capability
+  // s1: the Trojan Horse story: experience swallows a concept, the door opens, meaning travels, capability lands on the shelf
   (function(){
     var svg = document.getElementById('doorSvg');
     if (!svg) return;
     var NS = 'http://www.w3.org/2000/svg';
+    var COLS = ['#19b3a6', '#3f9ccf', '#6a76e3', '#7a55e8'];
     var labels = svg.querySelectorAll('.db');
+    var wing = svg.querySelector('.dwing');
+    var dlight = svg.querySelector('.dlight');
+    var portal = svg.querySelector('.dportal');
     var halo = document.createElementNS(NS, 'circle');
-    halo.setAttribute('r', '10');
-    halo.setAttribute('cy', '70');
+    halo.setAttribute('r', '11');
+    halo.setAttribute('cy', '78');
     halo.setAttribute('class', 'crun-halo');
     svg.appendChild(halo);
-    var dot = document.createElementNS(NS, 'rect');
-    dot.setAttribute('width', '12');
-    dot.setAttribute('height', '12');
-    dot.setAttribute('y', '64');
-    dot.setAttribute('fill', '#2b2744');
-    dot.setAttribute('class', 'crun');
-    svg.appendChild(dot);
+    var circ = document.createElementNS(NS, 'circle');
+    circ.setAttribute('r', '9');
+    circ.setAttribute('cy', '78');
+    circ.setAttribute('class', 'dcirc');
+    svg.appendChild(circ);
+    var core = document.createElementNS(NS, 'rect');
+    core.setAttribute('width', '8');
+    core.setAttribute('height', '8');
+    core.setAttribute('y', '74');
+    core.setAttribute('rx', '1.5');
+    core.setAttribute('class', 'dcore');
+    svg.appendChild(core);
     var deposits = [];
+    var lastPh = -1;
     function phaseOf(x){
-      if (x < 150) return 0;
-      if (x < 332) return 1;
-      if (x < 452) return 2;
+      if (x < 140) return 0;
+      if (x < 300) return 1;
+      if (x < 444) return 2;
       return 3;
     }
-    function setDot(x, ph){
-      dot.setAttribute('x', x - 6);
-      halo.setAttribute('cx', x);
-      dot.setAttribute('rx', ph === 0 ? 6 : (ph === 1 ? 3 : 1.5));
-      dot.setAttribute('transform', ph === 1 ? 'rotate(45 ' + x + ' 70)' : '');
-      labels.forEach(function(l, k){ l.setAttribute('fill', k === ph ? '#0f8f85' : '#2b2744'); });
-    }
     function deposit(){
-      if (deposits.length >= 4) {
-        deposits.forEach(function(d){ svg.removeChild(d); });
+      if (deposits.length >= 5) {
+        deposits.forEach(function(d){
+          d.style.opacity = '0';
+          setTimeout(function(){ if (d.parentNode) d.parentNode.removeChild(d); }, 400);
+        });
         deposits = [];
       }
-      var c = document.createElementNS(NS, 'circle');
-      c.setAttribute('cx', 458 + deposits.length * 12);
-      c.setAttribute('cy', '92');
-      c.setAttribute('r', '4');
-      c.setAttribute('fill', '#7a55e8');
-      svg.appendChild(c);
-      deposits.push(c);
+      var q = document.createElementNS(NS, 'rect');
+      q.setAttribute('width', '11');
+      q.setAttribute('height', '11');
+      q.setAttribute('x', 452 + deposits.length * 17);
+      q.setAttribute('y', '85');
+      q.setAttribute('rx', '2.5');
+      q.setAttribute('fill', '#7a55e8');
+      q.setAttribute('class', 'dcap');
+      svg.appendChild(q);
+      requestAnimationFrame(function(){ q.classList.add('set'); });
+      deposits.push(q);
     }
-    if (reduce) { setDot(478, 3); return; }
+    function frameState(x){
+      var ph = phaseOf(x);
+      circ.setAttribute('cx', x);
+      halo.setAttribute('cx', x);
+      core.setAttribute('x', x - 4);
+      var nearDoor = x > 118 && x < 186;
+      svg.classList.toggle('open', nearDoor);
+      portal.classList.toggle('pulse', Math.abs(x - 300) < 24);
+      if (ph === 0) {
+        circ.style.opacity = '1';
+        circ.style.fill = '#2b2744';
+        circ.style.stroke = 'none';
+        core.style.opacity = x > 72 ? '1' : '0';
+        core.style.fill = '#ffd84d';
+        core.setAttribute('transform', 'rotate(45 ' + x + ' 78)');
+      } else if (ph === 1) {
+        circ.style.opacity = '1';
+        circ.style.fill = 'rgba(255,255,255,.01)';
+        circ.style.stroke = '#2b2744';
+        core.style.opacity = '1';
+        core.style.fill = '#ffd84d';
+        core.setAttribute('transform', 'rotate(45 ' + x + ' 78)');
+      } else if (ph === 2) {
+        circ.style.opacity = '0';
+        core.style.opacity = '1';
+        core.style.fill = '#7a55e8';
+        core.setAttribute('transform', 'rotate(45 ' + x + ' 78)');
+      } else {
+        circ.style.opacity = '0';
+        core.style.opacity = x < 446 ? '1' : '0';
+        core.style.fill = '#7a55e8';
+        core.setAttribute('transform', 'rotate(' + Math.max(0, 45 - (x - 444) * 2) + ' ' + x + ' 78)');
+      }
+      if (ph !== lastPh) {
+        lastPh = ph;
+        labels.forEach(function(l, k){
+          l.setAttribute('fill', k === ph ? COLS[ph] : '#2b2744');
+          l.classList.toggle('lbload', k === ph);
+        });
+      }
+    }
+    if (reduce) { frameState(492); deposit(); return; }
     var start = null, cycles = -1;
     function frame(ts){
       if (!start) start = ts;
-      var raw = (ts - start) / 5600;
+      var raw = (ts - start) / 6400;
       var cyc = Math.floor(raw);
       var t = raw - cyc;
       if (cyc !== cycles) { cycles = cyc; if (cyc > 0) deposit(); }
-      var x = 30 + t * 448;
-      setDot(x, phaseOf(x));
+      frameState(24 + t * 512);
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
