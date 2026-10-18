@@ -1736,7 +1736,8 @@
         l.style.margin = '0';
         l.style.zIndex = '60';
         l.style.cursor = 'pointer';
-        l.style.textTransform = 'uppercase';
+        l.style.fontFamily = '"Figtree",Segoe UI,sans-serif';
+        l.style.fontWeight = '800';
         l.style.transition = 'transform .95s cubic-bezier(.2,.7,.2,1)';
       });
       requestAnimationFrame(function(){
@@ -1839,7 +1840,8 @@
           l.style.transition = '';
           l.style.transform = '';
           l.style.cursor = '';
-          l.style.textTransform = '';
+          l.style.fontFamily = '';
+          l.style.fontWeight = '';
           delete l.dataset.home;
           delete l.dataset.used;
           delete l.dataset.hx;
