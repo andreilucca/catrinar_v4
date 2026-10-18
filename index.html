@@ -1637,34 +1637,34 @@
     Object.defineProperty(window, 'heroBlown', { get: function(){ return blown; } });
     var RIDDLES = {
       b: [
-        'Rome was not ... in a day. Start where builders start.',
-        'Bricks, bridges and beginnings share their first sound.',
-        'The second letter of the alphabet opens this word.',
-        'A tall back with a round belly at the bottom. That is your start.'
+        'Rome was not ... in a day. Neither was your morning coffee habit.',
+        'Babies say it first, bakers knead it daily. The easiest letter to start with.',
+        'Bed, breakfast, bus. Your whole morning starts with this letter.',
+        'The sound you make when the alarm rings on Monday. That letter.'
       ],
       u: [
-        'Next comes the letter that sounds exactly like YOU.',
-        'A horseshoe turned up to catch the rain.',
-        'A cup with no handle. Pour the next piece in.',
-        'Between T and V in the alphabet, right after your B.'
+        'The letter that sounds exactly like YOU. And this puzzle is about you now.',
+        'A horseshoe catching rain. Or a cup of tea with no handle. Grab it.',
+        'Umbrella, upstairs, under the blanket. All the cozy places share it.',
+        'What we all look for on a rainy day starts with it: an umbrella.'
       ],
       i: [
-        'The thinnest letter: one stroke with a dot floating above.',
-        'Standing alone, it still means a person.',
-        'It hides twice in capability and once in insight. Take one.',
-        'The ninth letter of the alphabet, slim as a pencil.'
+        'The shortest word a human can say about himself. One stroke, one dot.',
+        'Standing alone it still means a person. You, for example.',
+        'The first letter of ice cream, the universal fix for a bad day.',
+        'It looks like a person standing in a queue. We have all been that letter.'
       ],
       l: [
-        'It starts learning, lab and life. One tall stroke with a foot.',
-        'Without it, you can only bui...d.',
-        'Half of a square corner. Lean it on the word.',
-        'Twelfth in the alphabet. It ends a trail and starts a lesson.'
+        'It starts love, lunch and laughter. The good parts of any day.',
+        'Without it you can only bui...d. Like soup without salt.',
+        'Late again? That excuse starts with this letter too.',
+        'It looks like a chair seen from the side. Everyone needs to sit sometimes.'
       ],
       d: [
-        'The end of the word and the start of discovery.',
-        'A straight back with a round front finishes the job.',
-        'Doors, dice and discovery open with it. Close the word.',
-        'Fourth letter of the alphabet, the last piece of your puzzle.'
+        'Dinner, dessert, a good deep sleep. How every decent day ends. End the word too.',
+        'The last piece. Like the last fry at the bottom of the bag: the best one.',
+        'Dogs, dancing and days off. The letter of simple joys. Close it.',
+        'A straight back with a round belly. Most of us after the holidays. Finish the word.'
       ]
     };
     var lastRiddle = -1, wrongCount = 0;
@@ -1701,6 +1701,68 @@
     }
     setTimeout(arm, 1600);
     function letters(){ return Array.prototype.slice.call(h1.querySelectorAll('.ltr')); }
+    var sx0 = 0, sx1 = 0, sy0 = 0, sy1 = 0, placed = [];
+    function spot(exceptIdx){
+      for (var t2 = 0; t2 < 26; t2++) {
+        var px2 = sx0 + Math.random() * (sx1 - sx0);
+        var py2 = sy0 + Math.random() * (sy1 - sy0);
+        var ok = true;
+        for (var q2 = 0; q2 < placed.length; q2++) {
+          if (q2 === exceptIdx) continue;
+          var dx2 = placed[q2][0] - px2, dy2 = placed[q2][1] - py2;
+          if (dx2 * dx2 + dy2 * dy2 < 3364) { ok = false; break; }
+        }
+        if (ok) return [px2, py2];
+      }
+      return [sx0 + Math.random() * (sx1 - sx0), sy0 + Math.random() * (sy1 - sy0)];
+    }
+    var rethrowing = false;
+    function rethrowAll(first){
+      if (rethrowing) return;
+      rethrowing = true;
+      var free = letters().filter(function(l){ return !l.dataset.used && !l.dataset.home; });
+      placed = [];
+      var maxEnd = 0;
+      free.forEach(function(l){
+        var p = spot(-1);
+        placed.push(p);
+        l.dataset.pi = placed.length - 1;
+        var delay = l === first ? 0 : Math.floor(Math.random() * 300);
+        var up = 36 + Math.random() * 60;
+        var dur = 550 + Math.random() * 450;
+        var end = delay + 200 + dur;
+        if (end > maxEnd) maxEnd = end;
+        (function(el, tf0, d0, u0, du0, pt){
+          setTimeout(function(){
+            el.style.transition = 'transform .2s ease-out';
+            el.style.transform = 'translateY(-' + u0.toFixed(0) + 'px) ' + tf0;
+            setTimeout(function(){
+              var rl = parseFloat(el.dataset.hx), rt = parseFloat(el.dataset.hy);
+              var rw = parseFloat(el.dataset.hw), rh = parseFloat(el.dataset.hh);
+              var ntf = 'translate(' + (pt[0] - rl - rw / 2) + 'px,' + (pt[1] - rt - rh / 2) + 'px) rotate(' + (Math.random() * 44 - 22).toFixed(0) + 'deg) scale(.55)';
+              el.dataset.tf = ntf;
+              el.style.transition = 'transform ' + (du0 / 1000).toFixed(2) + 's cubic-bezier(.2,.7,.2,1)';
+              el.style.transform = ntf;
+            }, 200);
+          }, d0);
+        })(l, l.dataset.tf, delay, up, dur, p);
+      });
+      setTimeout(function(){ rethrowing = false; }, maxEnd + 60);
+    }
+    function jig(e){
+      var l = e.currentTarget;
+      if (!blown || l.dataset.used || l.dataset.home || l.dataset.hop || l.dataset.jig) return;
+      var tf = l.dataset.tf;
+      if (!tf) return;
+      l.dataset.jig = '1';
+      l.style.transition = 'transform .14s ease-out';
+      l.style.transform = 'translateY(-7px) ' + tf;
+      setTimeout(function(){
+        l.style.transition = 'transform .32s cubic-bezier(.34,1.56,.64,1)';
+        l.style.transform = tf;
+        setTimeout(function(){ delete l.dataset.jig; }, 330);
+      }, 150);
+    }
     function explode(){
       if (blown || reduce) return;
       blown = true;
@@ -1723,24 +1785,9 @@
       slotY = vh * 0.45;
       slotGap = gap;
       slotSc = sc;
-      var x0 = vw * 0.04, x1 = vw * 0.94;
-      var y0 = vh * 0.09, y1 = vh * 0.82;
-      var placed = [];
-      function spot(){
-        for (var t2 = 0; t2 < 26; t2++) {
-          var px2 = x0 + Math.random() * (x1 - x0);
-          var py2 = y0 + Math.random() * (y1 - y0);
-          var ok = true;
-          for (var q2 = 0; q2 < placed.length; q2++) {
-            var dx2 = placed[q2][0] - px2, dy2 = placed[q2][1] - py2;
-            if (dx2 * dx2 + dy2 * dy2 < 3364) { ok = false; break; }
-          }
-          if (ok) { placed.push([px2, py2]); return [px2, py2]; }
-        }
-        var p2 = [x0 + Math.random() * (x1 - x0), y0 + Math.random() * (y1 - y0)];
-        placed.push(p2);
-        return p2;
-      }
+      sx0 = vw * 0.04; sx1 = vw * 0.94;
+      sy0 = vh * 0.09; sy1 = vh * 0.82;
+      placed = [];
       ls.forEach(function(l, k){
         var r = rects[k];
         l.dataset.hx = r.left;
@@ -1760,10 +1807,13 @@
       requestAnimationFrame(function(){
         ls.forEach(function(l, k){
           var r = rects[k];
-          var p3 = spot();
+          var p3 = spot(-1);
+          placed.push(p3);
+          l.dataset.pi = placed.length - 1;
           l.style.transform = 'translate(' + (p3[0] - r.left - r.width / 2) + 'px,' + (p3[1] - r.top - r.height / 2) + 'px) rotate(' + (Math.random() * 44 - 22).toFixed(0) + 'deg) scale(.55)';
           l.dataset.tf = l.style.transform;
           l.addEventListener('click', pick);
+          l.addEventListener('mouseenter', jig);
         });
       });
     }
@@ -1774,21 +1824,9 @@
       if (l.textContent.toLowerCase() !== seq[prog]) {
         wrongCount++;
         if (wrongCount >= 5) { wrongCount = 0; highlightNext(); }
-        var tf = l.dataset.tf;
-        if (tf && !l.dataset.hop) {
-          l.dataset.hop = '1';
-          l.classList.add('wrongflash');
-          l.style.transition = 'transform .18s ease-out';
-          l.style.transform = 'translateY(-30px) ' + tf;
-          setTimeout(function(){
-            l.style.transition = 'transform .4s cubic-bezier(.34,1.56,.64,1)';
-            l.style.transform = tf;
-            setTimeout(function(){
-              l.classList.remove('wrongflash');
-              delete l.dataset.hop;
-            }, 420);
-          }, 190);
-        }
+        l.classList.add('wrongflash');
+        setTimeout(function(){ l.classList.remove('wrongflash'); }, 600);
+        rethrowAll(l);
         return;
       }
       l.dataset.used = '1';
@@ -1865,6 +1903,9 @@
           delete l.dataset.hy;
           delete l.dataset.hw;
           delete l.dataset.hh;
+          delete l.dataset.pi;
+          delete l.dataset.tf;
+          l.removeEventListener('mouseenter', jig);
         });
         h1.style.height = '';
         h1.classList.remove('blown');
