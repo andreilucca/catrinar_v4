@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mihai Catrinar | Experiences that build human capability</title>
+<meta name="description" content="One inquiry, three laboratories: Education, Outdoor Joy and Embodiment. Mihai Catrinar designs experiences that build human capability.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#faf6ef;
+    --night-2:#ffffff;
+    --fog:#2b2744;
+    --fog-dim:#6e6a86;
+    --aur1:#19b3a6;
+    --aur2:#7a55e8;
+    --hair:rgba(43,39,68,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Figtree",Segoe UI,sans-serif;background:var(--night);color:var(--fog);font-size:1.02rem;line-height:1.7;font-weight:400;overflow-x:hidden}
+  ::selection{background:var(--aur2);color:#fff}
+  h1,h2,h3,.disp{font-family:"Unbounded",sans-serif;font-weight:600}
+  a{color:var(--fog);text-decoration-color:var(--aur1);text-decoration-thickness:2px;text-underline-offset:4px}
+  a:hover{color:var(--aur1)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--aur1);outline-offset:3px;border-radius:4px}
+  img{max-width:100%;display:block}
+  .grad{background:linear-gradient(92deg,var(--aur1),var(--aur2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tag{font-family:"Unbounded",sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--aur1)}
+
+  .fx{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .fx.in{opacity:1;transform:none}
+  .fx.d1{transition-delay:.15s}.fx.d2{transition-delay:.3s}.fx.d3{transition-delay:.45s}
+  @keyframes auro{0%,100%{transform:translate(0,0) scale(1);opacity:.5}50%{transform:translate(60px,-40px) scale(1.15);opacity:.8}}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .fx{opacity:1;transform:none}
+    .scene .lede{opacity:1}
+  }
+
+  .brand{position:fixed;top:20px;left:clamp(18px,3.5vw,40px);z-index:110;font-family:"Unbounded",sans-serif;font-weight:700;font-size:.95rem;color:var(--fog);text-decoration:none}
+  .brand span{color:var(--aur1)}
+
+  /* ---------- Film progress rail ---------- */
+  .rail{position:fixed;bottom:0;left:0;right:0;z-index:110;background:rgba(250,246,239,.88);backdrop-filter:blur(8px);border-top:1px solid var(--hair);padding:12px clamp(18px,3.5vw,40px) 14px}
+  .rail-top{display:flex;justify-content:space-between;gap:12px;font-family:"Unbounded",sans-serif;font-weight:600;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--fog-dim);margin-bottom:8px}
+  .rail-top em{font-style:normal;background:linear-gradient(92deg,var(--aur1),var(--aur2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .rail .line{position:relative;height:2px;background:var(--hair);border-radius:2px;margin-bottom:9px}
+  .rail .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--aur1),var(--aur2));border-radius:2px}
+  .rail .stops{display:flex;justify-content:space-between;gap:8px}
+  .rail .stops a{font-family:"Unbounded",sans-serif;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fog-dim);text-decoration:none;transition:color .25s ease}
+  .rail .stops a:hover,.rail .stops a.on{color:var(--aur1)}
+  @media (max-width:760px){.rail .stops a:nth-child(even){display:none}}
+
+  /* ---------- Horizontal cinema ---------- */
+  .hwrap{position:relative}
+  .track{display:flex}
+  .scene{min-width:100vw;height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding:64px clamp(22px,4vw,64px) 100px}
+  body.vertical .scene{overflow-x:hidden;overflow-y:auto}
+  html.hscroll{scrollbar-width:none}
+  html.hscroll::-webkit-scrollbar{width:0;height:0}
+  .scene .inner{max-width:1500px;margin:auto;width:100%;position:relative;z-index:3}
+  .scene .num{position:absolute;top:58px;left:clamp(18px,3.5vw,40px);font-family:"Unbounded",sans-serif;font-weight:600;font-size:.7rem;letter-spacing:.3em;color:var(--fog-dim);border:1px solid var(--hair);padding:8px 14px 8px 18px;border-radius:999px;pointer-events:none;z-index:2}
+  .blob{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+  .blob.c{width:480px;height:480px;background:rgba(25,179,166,.14);animation:auro 14s ease-in-out infinite}
+  .blob.v{width:520px;height:520px;background:rgba(122,85,232,.16);animation:auro 18s ease-in-out infinite reverse}
+  .scene h2{font-size:clamp(1.4rem,2.8vw,2.25rem);line-height:1.14;letter-spacing:-.01em;margin:10px 0 10px;max-width:22ch}
+  .scene .lede{color:var(--fog-dim);max-width:58ch;font-size:.93rem;line-height:1.62}
+  .duo{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,3.2vw,46px);align-items:center}
+  @media (max-width:880px){.duo{grid-template-columns:1fr}}
+  .polar{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--hair);transform:rotate(-1.4deg);transition:transform .4s ease;cursor:zoom-in;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+  .polar.alt{transform:rotate(1.4deg)}
+  .polar:hover{transform:rotate(0) scale(1.02)}
+  .polar img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .polar .cap{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 14px;background:linear-gradient(transparent,rgba(43,39,68,.86));font-size:.85rem;color:var(--fog)}
+  .minirow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+  @media (max-width:680px){.minirow{grid-template-columns:1fr}}
+  .mini{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;cursor:zoom-in;border:1px solid var(--hair)}
+  .mini img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .mini:hover img{transform:scale(1.08)}
+  .mini span{position:absolute;left:10px;bottom:8px;z-index:2;font-size:.72rem;font-weight:600;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+  .mini::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(13,13,30,0) 55%,rgba(13,13,30,.75))}
+  .hero-h1{font-size:clamp(2.4rem,6.4vw,4.8rem);line-height:1.06;letter-spacing:-.015em;margin:20px 0 22px;max-width:17ch}
+  .hero-h1:not(.ready){opacity:0}
+  .ltrs .wrd{display:inline-block;white-space:nowrap}
+  .ltrs .ltr{display:inline-block;transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
+  .ltrs .ltr:hover{transform:translateY(-.22em) rotate(-5deg) scale(1.08)}
+  .hero-h1 .ltr{opacity:0;transform:translateY(.55em) rotate(4deg)}
+  .hero-h1.ready .ltr{opacity:1;transform:none}
+  .hero-h1.ready .ltr:hover{transform:translateY(-.22em) rotate(-5deg) scale(1.08)}
+  .grad.split{background:none;-webkit-text-fill-color:initial;color:var(--fog)}
+  .scene .lede{opacity:0}
+  .scene .lede.ready{opacity:1}
+  .lede .lw{display:inline-block;opacity:0;transform:translateY(12px);filter:blur(7px)}
+  .lede.cine .lw{opacity:1;transform:none;filter:none;transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),filter .7s ease;transition-delay:var(--d)}
+  @keyframes blink{50%{opacity:0}}
+  .caret{display:inline-block;width:3px;height:.95em;vertical-align:-.12em;margin-left:3px;background:linear-gradient(var(--aur1),var(--aur2));border-radius:2px;animation:blink .85s steps(1) infinite}
+  .chain{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px}
+  .chain span{font-family:"Unbounded",sans-serif;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase}
+  .chain i{font-style:normal;color:var(--aur2)}
+  .pill{display:inline-block;font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--hair);color:var(--fog);padding:10px 18px;border-radius:999px;text-decoration:none;transition:border-color .25s ease,color .25s ease,background .25s ease}
+  .pill:hover{border-color:var(--aur1);color:var(--aur1)}
+  .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .explore{display:inline-flex;align-items:center;gap:16px;background:rgba(43,39,68,.05);border:1px solid var(--hair);border-radius:18px;padding:12px 22px 12px 12px;cursor:pointer;color:var(--fog);text-align:left;transition:border-color .25s ease,transform .2s ease,box-shadow .25s ease}
+  .explore:hover{transform:translateY(-3px);border-color:var(--aur1);box-shadow:0 16px 40px rgba(25,179,166,.14)}
+  .explore .xst{display:flex;flex:none}
+  .explore .xst img{width:48px;height:48px;object-fit:cover;border-radius:12px;border:2px solid var(--night-2);margin-left:-16px;transition:transform .3s ease}
+  .explore .xst img:first-child{margin-left:0}
+  .explore:hover .xst img:nth-child(1){transform:rotate(-8deg) translate(-4px,-2px)}
+  .explore:hover .xst img:nth-child(3){transform:rotate(8deg) translate(4px,-2px)}
+  .explore .xtx b{display:block;font-family:"Unbounded",sans-serif;font-weight:600;font-size:.76rem;letter-spacing:.02em}
+  .explore .xtx span{font-size:.78rem;color:var(--fog-dim)}
+  .explore i{font-style:normal;color:var(--aur1);font-size:1.15rem;margin-left:4px;transition:transform .25s ease}
+  .explore:hover i{transform:translateX(5px)}
+  .explore-row{margin-top:30px}
+  .mech{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:20px 0 0}
+  .mech .mline{position:absolute;left:11%;right:11%;top:27px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--aur1),var(--aur2),var(--aur1));background-size:200% 100%;animation:flowdash 2.2s linear infinite}
+  @keyframes flowdash{to{background-position:-200% 0}}
+  .mnode{display:flex;flex-direction:column;align-items:center;text-align:center;gap:7px;position:relative;z-index:1}
+  .mnode b{font-family:"Unbounded",sans-serif;font-weight:600;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;height:14px}
+  .mnode i{width:13px;height:13px;border-radius:50%;background:var(--night);border:3px solid var(--mc,var(--aur1))}
+  .mnode span{font-size:.72rem;color:var(--fog-dim);line-height:1.35}
+  .mnode:nth-child(2){--mc:#19b3a6}.mnode:nth-child(3){--mc:#3f9ccf}.mnode:nth-child(4){--mc:#6a76e3}.mnode:nth-child(5){--mc:#7a55e8}
+  @keyframes mpulse{0%{box-shadow:0 0 0 0 rgba(122,180,240,.45)}70%{box-shadow:0 0 0 9px rgba(122,180,240,0)}100%{box-shadow:0 0 0 0 rgba(122,180,240,0)}}
+  .mnode i{animation:mpulse 3.2s ease-out infinite}
+  .mnode:nth-child(3) i{animation-delay:.8s}.mnode:nth-child(4) i{animation-delay:1.6s}.mnode:nth-child(5) i{animation-delay:2.4s}
+  @media (max-width:560px){.mech{grid-template-columns:repeat(2,1fr);row-gap:18px}.mech .mline{display:none}}
+  .curve{background:rgba(43,39,68,.04);border:1px solid var(--hair);border-radius:18px;padding:12px 12px 4px}
+  .curve svg{width:auto;max-width:100%;height:auto;max-height:30svh;display:block;margin:0 auto}
+  .curve .cpath{stroke-dasharray:620;stroke-dashoffset:620;transition:stroke-dashoffset 2.4s cubic-bezier(.2,.7,.2,1)}
+  .curve.in .cpath{stroke-dashoffset:0}
+  .curve .cdot,.curve .clab{opacity:0;transition:opacity .5s ease}
+  .curve.in .cdot,.curve.in .clab{opacity:1}
+  .curve-cap{font-size:.82rem;color:var(--fog-dim);margin-top:10px}
+  .lab-view{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--hair);cursor:zoom-in;aspect-ratio:16/9;max-height:38svh;width:100%;margin:0}
+  .lab-view img{width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .22s ease,transform .7s ease}
+  .lab-view:hover img{transform:scale(1.03)}
+  .lab-view img.swap{opacity:0}
+  .lab-view figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 14px;background:linear-gradient(transparent,rgba(43,39,68,.88));pointer-events:none}
+  .lab-view figcaption b{display:block;font-family:"Unbounded",sans-serif;font-weight:600;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;background:linear-gradient(92deg,var(--aur1),var(--aur2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:4px}
+  .lab-view figcaption span{font-size:.86rem;color:#fff}
+  .lab-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:10px}
+  .lab-th{position:relative;border:0;padding:0;border-radius:12px;overflow:hidden;aspect-ratio:1;max-height:9.5svh;width:100%;cursor:pointer;background:#eceaf2;outline:2px solid transparent;outline-offset:-2px;transition:outline-color .2s ease,transform .2s ease,opacity .2s ease;opacity:.75}
+  .lab-th img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+  .lab-th:hover,.lab-th.on{outline-color:var(--aur1);transform:translateY(-3px);opacity:1}
+  .lab-all{border:1px dashed var(--hair);border-radius:12px;aspect-ratio:1;background:rgba(43,39,68,.04);color:var(--fog);font-family:"Unbounded",sans-serif;font-weight:600;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:border-color .2s ease,transform .2s ease}
+  .lab-all i{font-style:normal;color:var(--aur1);font-size:1rem}
+  .lab-all:hover{border-color:var(--aur1);transform:translateY(-3px)}
+  .mini::after,.mini span,.polar .cap{pointer-events:none}
+  .duolab{align-items:start;margin-top:30px;gap:clamp(40px,6vw,130px)}
+  .lab-strip{grid-template-columns:repeat(8,1fr);gap:5px}
+  @media (max-width:720px){.lab-strip{grid-template-columns:repeat(4,1fr)}}
+  .crun{filter:drop-shadow(0 0 6px rgba(122,85,232,.75))}
+  .crun-halo{fill:rgba(122,85,232,.22)}
+  .mnode i{transition:transform .3s ease}
+  .mnode.live i{transform:scale(1.45);box-shadow:0 0 0 7px rgba(122,180,240,.16)}
+  .mnode.live b{background:linear-gradient(92deg,var(--aur1),var(--aur2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .aud{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+  @media (max-width:720px){.aud{grid-template-columns:1fr}}
+  .aud-c{display:flex;flex-direction:column;gap:6px;text-align:left;border:1px solid var(--hair);background:rgba(43,39,68,.04);border-radius:14px;padding:13px 14px;color:var(--fog);text-decoration:none;cursor:pointer;transition:border-color .2s ease,transform .2s ease,background .2s ease}
+  .aud-c b{font-family:"Unbounded",sans-serif;font-weight:600;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase}
+  .aud-c span{font-size:.74rem;color:var(--fog-dim);line-height:1.45;flex:1}
+  .aud-c i{font-style:normal;color:var(--aur1);font-size:.95rem;transition:transform .2s ease}
+  .aud-c:hover{border-color:var(--aur1);transform:translateY(-3px);background:rgba(43,39,68,.07)}
+  .aud-c:hover i{transform:translateX(4px)}
+  .minor{display:inline-block;margin-top:12px;font-size:.78rem;color:var(--fog-dim);text-decoration-color:var(--aur1)}
+  .minor:hover{color:var(--aur1)}
+  .door,.loop{border:1px solid var(--hair);border-radius:18px;background:rgba(43,39,68,.04);padding:8px 12px 4px;margin-top:14px}
+  .door svg{width:100%;height:auto;max-height:150px;display:block;margin:0 auto}
+  .loop svg{width:auto;max-width:100%;height:auto;max-height:30svh;display:block;margin:0 auto}
+  .door .db,.loop .lb{transition:fill .25s ease}
+  .loop .ln{transform-box:fill-box;transform-origin:center;transition:transform .25s ease}
+  .loop .ln.live{transform:scale(1.6)}
+  .explore.wide{width:100%;justify-content:flex-start;padding:16px 22px 16px 14px;border:1px solid transparent;background:linear-gradient(var(--night-2),var(--night-2)) padding-box,linear-gradient(92deg,var(--aur1),var(--aur2)) border-box}
+  .explore.wide i{margin-left:auto}
+  .explore.wide:hover{box-shadow:0 18px 50px rgba(122,85,232,.22);transform:translateY(-3px)}
+  .ins-list .ic{width:32px;height:32px;flex:none;display:flex;align-items:center;justify-content:center;border:1px solid var(--hair);border-radius:10px;color:var(--fog-dim);transition:color .2s ease,border-color .2s ease,transform .2s ease}
+  .ins-list .ic svg{width:16px;height:16px;display:block}
+  .ins-list a:hover .ic{color:var(--aur1);border-color:var(--aur1);transform:translateY(-2px)}
+  .ic-cam .rec{opacity:0;fill:#ff5d7a;stroke:none}
+  .ins-list a:hover .ic-cam .rec{opacity:1;animation:recblink 1.1s steps(1) infinite}
+  @keyframes recblink{50%{opacity:.15}}
+  .ic svg *{transform-box:fill-box;transform-origin:center}
+  .ins-list a:hover .ic-book svg{animation:bookflip .6s ease}
+  @keyframes bookflip{40%{transform:rotateY(26deg) scale(1.1)}}
+  .ins-list a:hover .ic-course .tassel{animation:tassel .7s ease}
+  @keyframes tassel{40%{transform:translate(2px,2px) rotate(18deg)}70%{transform:rotate(-8deg)}}
+  .ins-list a:hover .ic-compass .needle{animation:spinn .8s cubic-bezier(.2,.7,.2,1)}
+  @keyframes spinn{to{transform:rotate(360deg)}}
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+  @media (max-width:720px){.skills{grid-template-columns:1fr}}
+  .skill{position:relative;display:flex;flex-direction:column;gap:6px;border:1px solid var(--hair);border-radius:14px;padding:14px;background:var(--night-2);overflow:hidden;text-decoration:none;color:var(--fog);transition:transform .25s ease,box-shadow .25s ease}
+  .skill::before{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:linear-gradient(92deg,var(--aur1),var(--aur2));transition:width .45s cubic-bezier(.2,.7,.2,1)}
+  .skill:hover::before{width:100%}
+  .skill:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(43,39,68,.14)}
+  .sk-ic{width:34px;height:34px;border-radius:10px;border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;color:var(--aur2)}
+  .sk-ic svg{width:18px;height:18px;display:block}
+  .sk-ic svg *{transform-box:fill-box;transform-origin:center}
+  .skill b{font-family:"Unbounded",sans-serif;font-weight:600;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase}
+  .sk-sub{font-size:.76rem;color:var(--fog-dim);line-height:1.45}
+  .sk-proof{font-size:.72rem;color:var(--aur2);line-height:1.5;max-height:0;opacity:0;overflow:hidden;border-top:1px dashed var(--hair);transition:max-height .4s ease,opacity .4s ease,padding .4s ease,margin .4s ease}
+  .skill:hover .sk-proof{max-height:110px;opacity:1;padding-top:8px;margin-top:2px}
+  @keyframes skpop{50%{transform:translate(2px,-2px) scale(1.25)}}
+  .skill:hover .sk-b2{animation:skpop .6s ease}
+  .skill:hover .tassel{animation:tassel .7s ease}
+  .skill:hover .needle{animation:spinn .8s cubic-bezier(.2,.7,.2,1)}
+  .watch{display:inline-flex;align-items:center;gap:12px;margin-top:14px;border:1px solid var(--hair);border-radius:14px;padding:8px 18px 8px 8px;background:var(--night-2);text-decoration:none;color:var(--fog);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .watch:hover{transform:translateY(-3px);border-color:var(--aur1);box-shadow:0 14px 36px rgba(25,179,166,.16)}
+  .wph{position:relative;width:76px;height:48px;border-radius:10px;overflow:hidden;flex:none}
+  .wph img{width:100%;height:100%;object-fit:cover}
+  .wplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;background:rgba(43,39,68,.4);font-style:normal;font-size:.72rem;transition:background .25s ease}
+  .watch:hover .wplay{background:linear-gradient(92deg,rgba(25,179,166,.75),rgba(122,85,232,.75))}
+  .wtx b{display:block;font-family:"Unbounded",sans-serif;font-weight:600;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}
+  .wtx span{font-size:.74rem;color:var(--fog-dim)}
+  .doors{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:26px}
+  .door-c{display:flex;flex-direction:column;gap:3px;align-items:center;border:1px solid var(--hair);background:var(--night-2);border-radius:16px;padding:15px 24px;cursor:pointer;color:var(--fog);transition:border-color .2s ease,transform .25s ease,box-shadow .25s ease,opacity .35s ease}
+  .door-c b{font-family:"Unbounded",sans-serif;font-weight:600;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase}
+  .door-c span{font-size:.7rem;color:var(--fog-dim)}
+  .door-c:hover{border-color:var(--aur1);transform:translateY(-4px);box-shadow:0 14px 36px rgba(43,39,68,.12)}
+  .doors.away .door-c{opacity:0;transform:scale(.82) translateY(14px);transition-delay:var(--d);pointer-events:none}
+  .door-panel{max-width:620px;margin:0 auto 26px;background:var(--night-2);border:1px solid var(--hair);border-radius:20px;padding:26px 28px;text-align:left;box-shadow:0 24px 60px rgba(43,39,68,.12)}
+  .door-panel[hidden]{display:none}
+  .door-panel h3{font-family:"Unbounded",sans-serif;font-weight:600;font-size:.95rem;margin-bottom:12px;text-align:center}
+  .door-panel ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
+  .door-panel li{font-size:.86rem;color:var(--fog-dim);padding-left:20px;position:relative}
+  .door-panel li::before{content:"";position:absolute;left:2px;top:.52em;width:8px;height:8px;border-radius:50%;background:linear-gradient(92deg,var(--aur1),var(--aur2))}
+  .pz{opacity:0;transform:translate(var(--dx,0),var(--dy,14px)) rotate(var(--r,0deg))}
+  .door-panel.in .pz{opacity:1;transform:none;transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d)}
+  .door-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .door-mail{font-weight:700;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:linear-gradient(92deg,var(--aur1),var(--aur2));color:#fff;border:0;border-radius:999px;padding:12px 22px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+  .door-mail:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(122,85,232,.3);color:#fff}
+  .door-back{font-weight:700;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--fog);border:1px solid var(--hair);border-radius:999px;padding:12px 22px;cursor:pointer;transition:border-color .2s ease,color .2s ease}
+  .door-back:hover{border-color:var(--aur1);color:var(--aur1)}
+  .contacts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:8px}
+  .cbtn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--hair);background:var(--night-2);border-radius:14px;padding:11px 18px;text-decoration:none;color:var(--fog);font-size:.82rem;font-weight:600;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+  .cbtn svg{width:17px;height:17px;display:block;color:var(--aur2)}
+  .cbtn:hover{transform:translateY(-3px);border-color:var(--aur1);box-shadow:0 12px 30px rgba(43,39,68,.1)}
+  .cbtn.solid{background:linear-gradient(92deg,var(--aur1),var(--aur2));border-color:transparent;color:#fff}
+  .cbtn.solid svg{color:#fff}
+  .nl-vid{opacity:0;transform:translateY(5px);transition:opacity .25s ease,transform .25s ease;transform-box:fill-box}
+  .nl.filming .nl-vid{opacity:1;transform:none}
+  .nl.filming .nl-vid .vrec{animation:recblink 1.1s steps(1) infinite}
+
+  .scrollbox{max-height:44svh;overflow-y:auto;padding-right:10px;scrollbar-width:thin;scrollbar-color:var(--aur2) var(--night-2)}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .filter{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--hair);background:transparent;color:var(--fog);padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s ease}
+  .filter:hover{border-color:var(--aur1)}
+  .filter.on{background:linear-gradient(92deg,var(--aur1),var(--aur2));border-color:transparent;color:#ffffff}
+  .ins-list{list-style:none;border-top:1px solid var(--hair)}
+  .ins-list li{border-bottom:1px solid var(--hair)}
+  .ins-list li.hide{display:none}
+  .ins-list a{display:flex;gap:14px;align-items:center;padding:13px 6px;text-decoration:none;color:var(--fog);transition:background .25s ease,padding .25s ease}
+  .ins-list .t{flex:1}
+  .ins-list .wh{margin-left:auto}
+  .ins-list a:hover{background:rgba(43,39,68,.05);padding-left:16px}
+  .ins-list .t{font-weight:400;font-size:.98rem}
+  .ins-list a:hover .t{color:var(--aur1)}
+  .ins-list .wh{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fog-dim);white-space:nowrap}
+
+  .cred{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+  @media (max-width:680px){.cred{grid-template-columns:1fr}}
+  .cred div{background:rgba(43,39,68,.05);border:1px solid var(--hair);border-radius:12px;padding:11px 14px;font-size:.78rem;line-height:1.5;color:var(--fog-dim)}
+  .cred b{display:block;font-family:"Unbounded",sans-serif;font-weight:600;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--aur1);margin-bottom:5px}
+  .portrait{width:min(230px,55vw);border-radius:20px;border:1px solid var(--hair)}
+
+  footer{padding:26px clamp(22px,5vw,72px) 72px;font-size:.84rem;color:var(--fog-dim);border-top:1px solid var(--hair);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  /* vertical fallback (mobile / no gsap / reduced motion) */
+  body.vertical .track{display:block}
+  body.vertical .scene{min-width:0;height:auto;min-height:100svh}
+
+  /* ---------- Explorable gallery ---------- */
+  .gx{position:fixed;inset:0;background:rgba(43,39,68,.4);display:none;align-items:center;justify-content:center;z-index:140;padding:16px}
+  .gx.open{display:flex}
+  .gx-panel{background:var(--night-2);border:1px solid var(--hair);border-radius:26px;max-width:1140px;width:100%;max-height:95vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 40px 90px rgba(43,39,68,.25)}
+  .gx-head{display:flex;align-items:center;gap:18px;padding:16px 22px;border-bottom:1px solid var(--hair)}
+  #gx-world{font-family:"Unbounded",sans-serif;font-weight:600;font-size:.84rem;letter-spacing:.06em;background:linear-gradient(92deg,var(--aur1),var(--aur2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  #gx-count{margin-left:auto;font-size:.72rem;font-weight:700;letter-spacing:.22em;color:var(--fog-dim)}
+  #gx-close{border:1px solid var(--hair);background:transparent;color:var(--fog);width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;transition:all .2s ease}
+  #gx-close:hover{border-color:var(--aur1);color:var(--aur1);transform:rotate(90deg)}
+  .gx-stage{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:18px 14px 10px}
+  .gx-stage figure{text-align:center;min-width:0}
+  #gx-img{max-width:100%;max-height:56vh;margin:0 auto;border-radius:16px;opacity:1;transform:none;transition:opacity .3s ease,transform .3s ease;touch-action:pan-y}
+  #gx-img.swap{opacity:0;transform:scale(.985)}
+  .gx-stage figcaption{padding:14px 16px 0}
+  #gx-title{font-family:"Unbounded",sans-serif;font-weight:600;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;background:linear-gradient(92deg,var(--aur1),var(--aur2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  #gx-msg{font-family:"Unbounded",sans-serif;font-weight:500;font-size:clamp(.88rem,1.4vw,1.06rem);line-height:1.65;color:#4a4468;max-width:44ch;margin:10px auto 0}
+  #gx-msg .w{display:inline-block;opacity:0;transform:translateY(14px) rotate(2deg);filter:blur(5px);animation:wordin .55s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes wordin{to{opacity:1;transform:none;filter:none}}
+  #gx-play{border:1px solid var(--hair);background:transparent;color:var(--fog);height:38px;padding:0 16px;border-radius:999px;font-weight:700;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s ease}
+  #gx-play:hover{border-color:var(--aur1);color:var(--aur1)}
+  #gx-play.on{background:linear-gradient(92deg,var(--aur1),var(--aur2));border-color:transparent;color:#ffffff}
+  @keyframes kb{to{transform:scale(1.07)}}
+  #gx-img.kb{animation:kb 3.8s ease-in-out forwards}
+  #gx-prev,#gx-next{display:none}
+  .gx-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px;padding:14px 18px 18px;overflow-y:auto}
+  .gx-th{border:0;padding:0;border-radius:12px;overflow:hidden;cursor:pointer;opacity:.4;transition:opacity .25s ease,transform .25s ease;background:#eceaf2;aspect-ratio:1}
+  .gx-th img{width:100%;height:100%;object-fit:cover}
+  .gx-th:hover{opacity:1;transform:scale(1.04)}
+  .gx-th.on{opacity:1;outline:2px solid var(--aur1);outline-offset:-2px}
+
+  /* ---------- Recognition overlay ---------- */
+  .recog{position:fixed;inset:0;background:rgba(43,39,68,.4);display:none;align-items:center;justify-content:center;z-index:150;padding:22px}
+  .recog.open{display:flex}
+  .recog-panel{position:relative;background:var(--night-2);border:1px solid var(--hair);border-radius:26px;max-width:660px;width:100%;max-height:92vh;overflow-y:auto;padding:38px 36px;text-align:center}
+  .recog-k{font-family:"Unbounded",sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;background:linear-gradient(92deg,var(--aur1),var(--aur2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:12px}
+  .recog-panel h3{font-family:"Unbounded",sans-serif;font-size:1.25rem;margin-bottom:10px}
+  .recog-p{color:var(--fog-dim);font-size:.92rem;margin-bottom:22px}
+  .recog-panel img{border-radius:14px}
+  #recog-close{position:absolute;top:16px;right:16px;border:1px solid var(--hair);background:transparent;color:var(--fog);width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;transition:all .2s ease}
+  #recog-close:hover{border-color:var(--aur1);color:var(--aur1);transform:rotate(90deg)}
+
+  /* ---------- Newsletter buddy ---------- */
+  .nl{position:fixed;left:clamp(16px,2.6vw,30px);bottom:92px;z-index:118}
+  .nl-fab{position:relative;width:60px;height:60px;border-radius:50%;cursor:pointer;font-size:1.85rem;line-height:1;display:flex;align-items:center;justify-content:center;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease}
+  .nl-fab:hover{transform:translateY(-4px) scale(1.1) rotate(-8deg)}
+  .nl-face{display:inline-block}
+  @keyframes nl-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  .nl-face{animation:nl-bob 2.6s ease-in-out infinite}
+  @keyframes nl-wiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(6deg)}}
+  .nl-fab.nudge .nl-face{animation:nl-wiggle .9s ease-in-out}
+  @keyframes nl-spin{0%{transform:rotate(0) scale(1)}60%{transform:rotate(540deg) scale(1.25)}100%{transform:rotate(720deg) scale(1)}}
+  .nl-fab.party .nl-face{animation:nl-spin .9s cubic-bezier(.2,.7,.2,1)}
+  .nl-spark{position:absolute;top:50%;left:50%;width:7px;height:7px;border-radius:50%;opacity:0;pointer-events:none}
+  @keyframes nl-pop1{0%{transform:translate(-50%,-50%) scale(.4);opacity:1}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1);opacity:0}}
+  .nl-fab.party .nl-spark{animation:nl-pop1 .85s ease-out forwards}
+  .nl-spark.s1{--dx:-44px;--dy:-34px}.nl-spark.s2{--dx:46px;--dy:-26px}.nl-spark.s3{--dx:-36px;--dy:36px}
+  .nl-spark.s4{--dx:40px;--dy:40px}.nl-spark.s5{--dx:0px;--dy:-52px}.nl-spark.s6{--dx:-54px;--dy:4px}
+  .nl-pop{position:absolute;left:0;bottom:74px;width:min(300px,78vw);padding:20px 20px 18px;opacity:0;transform:translateY(14px) scale(.95);pointer-events:none;transition:opacity .3s ease,transform .3s cubic-bezier(.2,.7,.2,1)}
+  .nl-pop.open{opacity:1;transform:none;pointer-events:auto}
+  .nl-t{font-weight:700;margin-bottom:6px}
+  .nl-p{font-size:.86rem;margin-bottom:14px}
+  .nl-go{display:inline-block;text-decoration:none;font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:11px 20px;cursor:pointer;transition:transform .2s ease,background .2s ease,color .2s ease}
+  .nl-go:hover{transform:translateY(-2px)}
+  .nl-done{display:none;font-size:.84rem;margin-top:12px;font-weight:600}
+  .nl-done.show{display:block}
+  .nl-fab{background:var(--night-2);border:1px solid var(--hair);box-shadow:0 12px 34px rgba(0,0,0,.5)}
+  .nl-fab:hover{box-shadow:0 0 0 2px var(--aur1),0 16px 40px rgba(122,85,232,.35)}
+  .nl-spark{background:var(--aur1)}
+  .nl-spark.s2,.nl-spark.s4,.nl-spark.s6{background:var(--aur2)}
+  .nl-pop{background:var(--night-2);border:1px solid var(--hair);border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+  .nl-t{font-family:"Unbounded",sans-serif;font-weight:600}
+  .nl-p{color:var(--fog-dim)}
+  .nl-go{background:linear-gradient(92deg,var(--aur1),var(--aur2));color:#ffffff;border-radius:999px}
+  .nl-go:hover{color:#ffffff;box-shadow:0 10px 26px rgba(122,85,232,.4)}
+  .nl-done{color:var(--aur1)}
+
+  .nl-face{width:44px;height:44px}
+  .nl-eye{transform-origin:50% 50%;transform-box:fill-box;animation:nl-blink 4.4s ease-in-out infinite}
+  @keyframes nl-blink{0%,90%,100%{transform:scaleY(1)}93%{transform:scaleY(.12)}}
+  .nl-star,.nl-mouth-big{opacity:0;transition:opacity .2s ease}
+  .nl.joined .nl-eye,.nl-fab.party .nl-eye{opacity:0}
+  .nl.joined .nl-star,.nl-fab.party .nl-star{opacity:1}
+  .nl.joined .nl-mouth,.nl-fab.party .nl-mouth{opacity:0}
+  .nl.joined .nl-mouth-big,.nl-fab.party .nl-mouth-big{opacity:1}
+  .nl-form{display:flex;gap:8px}
+  .nl-mail{flex:1;min-width:0;background:rgba(43,39,68,.07);border:1px solid var(--hair);border-radius:999px;padding:11px 14px;color:var(--fog);font:inherit;font-size:.86rem}
+  .nl-mail::placeholder{color:var(--fog-dim)}
+  .nl-mail:focus{outline:2px solid var(--aur1);outline-offset:1px}
+  .nl-arm,.nl-leg,.nl-tail{transform-box:fill-box;transform-origin:top left}
+  @keyframes nl-runf{0%,100%{transform:rotate(14deg)}50%{transform:rotate(-24deg)}}
+  @keyframes nl-runb{0%,100%{transform:rotate(-20deg)}50%{transform:rotate(16deg)}}
+  .nl-fab.party .nl-leg-f,.nl-fab.party .nl-arm-b{animation:nl-runf .32s ease-in-out infinite}
+  .nl-fab.party .nl-leg-b,.nl-fab.party .nl-arm-f{animation:nl-runb .32s ease-in-out infinite}
+  .nl-fab:hover .nl-tail{animation:nl-wiggle 1.1s ease-in-out infinite}
+</style>
+<noscript><style>.hero-h1:not(.ready){opacity:1}.scene .lede{opacity:1}</style></noscript>
+</head>
+<body>
+
+<a class="brand" href="#s0">Mihai Catrinar<span>.</span></a>
+
+<div class="hwrap" id="hwrap">
+  <div class="track" id="track">
+
+    <section class="scene" id="s0">
+      <div class="blob c" style="top:-120px;left:10%"></div>
+      <div class="blob v" style="bottom:-160px;right:8%"></div>
+      <span class="num">00</span>
+      <div class="inner">
+        <span class="tag fx in">One inquiry / Three laboratories</span>
+        <h1 class="hero-h1">Experiences that build <span class="grad">human capability</span>.</h1>
+        <p class="lede" id="lede0">We know more than ever. But knowing is not enough. We need to transfer what we know, adapt when the context changes, regulate ourselves, connect with others. Move. Experience.</p>
+        <div class="pills fx in d3" style="margin-top:34px"><a class="pill" href="#s1">Begin the journey &rarr;</a></div>
+      </div>
+    </section>
+
+    <section class="scene" id="s1">
+      <div class="blob c" style="bottom:-140px;left:-60px"></div>
+      <span class="num">01 / Education</span>
+      <div class="inner duo duolab">
+        <div class="fx d1">
+          <div class="lab">
+            <figure class="lab-view">
+              <img id="labimg-edu" src="assets/ed-hero.jpg" alt="Relevant, meaningful experiences get learners through the door." data-g="edu" data-gi="0">
+              <figcaption><b id="labverb-edu">A shared challenge</b><span id="labcap-edu">Relevant, meaningful experiences get learners through the door.</span></figcaption>
+            </figure>
+            <div class="lab-strip" id="labstrip-edu" aria-label="All moments: hover to preview, click to open"></div>
+            <p class="curve-cap">24 classroom moments, each with its idea. Hover to preview, click to open.</p>
+          </div>
+        </div>
+        <div>
+          <span class="tag fx">01 / Education</span>
+          <h2 class="fx">Learning that <span class="grad">travels</span></h2>
+          <p class="lede fx d1">Movement is the Trojan Horse. A meaningful experience gets learners through the door; inside it we hide concepts. Then we change the context and ask: can you use what you understood somewhere else?</p>
+          <div class="door fx d1" aria-label="The Trojan Horse mechanism: experience carries concepts through the door, understanding travels, capabilities remain">
+            <svg id="doorSvg" viewBox="0 0 520 150">
+              <defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#19b3a6"/><stop offset="1" stop-color="#7a55e8"/></linearGradient></defs>
+              <line x1="22" y1="70" x2="498" y2="70" stroke="rgba(43,39,68,.16)" stroke-width="1.5"/>
+              <rect x="146" y="32" width="9" height="76" rx="4" fill="url(#dg)" opacity=".9"/>
+              <text x="150" y="24" text-anchor="middle" fill="#8b86a3" font-size="8" letter-spacing="2" font-family="Figtree,sans-serif">THE DOOR</text>
+              <line x1="332" y1="36" x2="332" y2="104" stroke="rgba(43,39,68,.3)" stroke-width="1.5" stroke-dasharray="4 5"/>
+              <text x="332" y="24" text-anchor="middle" fill="#8b86a3" font-size="8" letter-spacing="2" font-family="Figtree,sans-serif">NEW CONTEXT</text>
+              <text class="db" data-ph="0" x="82" y="116" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">EXPERIENCE</text>
+              <text class="db" data-ph="1" x="242" y="116" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">CONCEPTS</text>
+              <text class="db" data-ph="2" x="392" y="116" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">TRANSFER</text>
+              <text class="db" data-ph="3" x="478" y="116" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">REMAIN</text>
+              <text x="82" y="132" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">opens the door</text>
+              <text x="242" y="132" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">create meaning</text>
+              <text x="392" y="132" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">understanding travels</text>
+              <text x="478" y="132" text-anchor="middle" fill="#8b86a3" font-size="9" font-family="Figtree,sans-serif">capabilities stay</text>
+            </svg>
+          </div>
+          <div class="skills fx d2">
+            <a class="skill" href="#s6">
+              <span class="sk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path class="sk-b2" d="M19 9h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v3l-3-3"/></svg></span>
+              <b>Coaching</b>
+              <span class="sk-sub">1:1 instructional coaching that moves classroom practice.</span>
+              <span class="sk-proof">Professional Learning Coach at Education to Change the World, alongside Julie Stern.</span>
+            </a>
+            <a class="skill" href="#s6">
+              <span class="sk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 5l9 4.5-9 4.5z"/><path d="M7 12.2v3.8c0 1.3 2.2 2.4 5 2.4s5-1.1 5-2.4v-3.8"/><path class="tassel" d="M21 9.5v5"/></svg></span>
+              <b>Professional learning</b>
+              <span class="sk-sub">Workshops and courses, from PE job-alikes to an 8-week course.</span>
+              <span class="sk-proof">100+ physical educators certified worldwide. Learning that Transfers endorsed educator and IB workshop leader.</span>
+            </a>
+            <a class="skill" href="#s6">
+              <span class="sk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path class="needle" d="m15 9-2.2 5-4.8 1.2 2.2-5z"/></svg></span>
+              <b>Consulting</b>
+              <span class="sk-sub">Curriculum design, from single units to whole programmes.</span>
+              <span class="sk-proof">18 years across IB schools in the Middle East, South-East Asia and Europe. MYP Assistant Head, Albanian College Tirana.</span>
+            </a>
+          </div>
+          <a class="watch watchlink fx d2" href="https://www.youtube.com/watch?v=UMsb0_iomHo" target="_blank" rel="noopener">
+            <span class="wph"><img src="assets/card-webinar.jpg" alt=""><i class="wplay">&#9658;</i></span>
+            <span class="wtx"><b>Watch the webinar</b><span>Conceptual Understanding in Physical Education, 2020</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="s2">
+      <div class="blob v" style="top:-140px;right:-80px"></div>
+      <span class="num">02 / Outdoor Joy</span>
+      <div class="inner duo duolab">
+        <div class="fx d1">
+          <div class="lab">
+            <figure class="lab-view">
+              <img id="labimg-oj" src="assets/oj-hero.jpg" alt="The outdoors is not the destination. It is the learning lab." data-g="oj" data-gi="0">
+              <figcaption><b id="labverb-oj">The canyon</b><span id="labcap-oj">The outdoors is not the destination. It is the learning lab.</span></figcaption>
+            </figure>
+            <div class="lab-strip" id="labstrip-oj" aria-label="All moments: hover to preview, click to open"></div>
+            <p class="curve-cap">24 moments in the learning lab. Hover to preview, click to open.</p>
+          </div>
+        </div>
+        <div>
+          <span class="tag fx">02 / Outdoor Joy</span>
+          <h2 class="fx">Experience. Connect. <span class="grad">Become.</span></h2>
+          <p class="lede fx d1">Not another hiking, SUP or adventure provider. The outdoors is our learning environment. Children and adults discover what they can sustain, what they can do, and who they are becoming, and parents are invited into the experience.</p>
+          <div class="loop fx d1" aria-label="The outdoor learning loop: experience, challenge, reflection, transfer, on repeat">
+            <svg id="loopSvg" viewBox="0 0 400 212">
+              <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19b3a6"/><stop offset="1" stop-color="#7a55e8"/></linearGradient></defs>
+              <circle cx="200" cy="108" r="66" fill="none" stroke="url(#lg)" stroke-width="2.5" opacity=".85"/>
+              <circle class="ln" data-ph="0" cx="200" cy="42" r="5" fill="#19b3a6"/>
+              <circle class="ln" data-ph="1" cx="266" cy="108" r="5" fill="#3f9ccf"/>
+              <circle class="ln" data-ph="2" cx="200" cy="174" r="5" fill="#6a76e3"/>
+              <circle class="ln" data-ph="3" cx="134" cy="108" r="5" fill="#7a55e8"/>
+              <text class="lb" data-ph="0" x="200" y="24" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">EXPERIENCE</text>
+              <text class="lb" data-ph="1" x="280" y="112" text-anchor="start" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">CHALLENGE</text>
+              <text class="lb" data-ph="2" x="200" y="202" text-anchor="middle" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">REFLECTION</text>
+              <text class="lb" data-ph="3" x="120" y="112" text-anchor="end" fill="#2b2744" font-size="10.5" letter-spacing="2" font-family="Unbounded,sans-serif">TRANSFER</text>
+              <text x="200" y="102" text-anchor="middle" fill="#8b86a3" font-size="8.5" letter-spacing="2.5" font-family="Figtree,sans-serif">WHAT WE LEARN</text>
+              <text x="200" y="118" text-anchor="middle" fill="#8b86a3" font-size="8.5" letter-spacing="2.5" font-family="Figtree,sans-serif">TRAVELS WITH US</text>
+            </svg>
+          </div>
+          <div class="aud fx d2">
+            <button class="aud-c" data-g="oj" data-gi="11"><b>Students</b><span>Belonging, responsibility and self-regulation, built on real trails.</span><i>&rarr;</i></button>
+            <button class="aud-c" data-g="oj" data-gi="12"><b>Companies</b><span>From team building to collective capacity.</span><i>&rarr;</i></button>
+            <button class="aud-c" data-g="oj" data-gi="14"><b>Groups and families</b><span>Parents join the experience and grow alongside their children.</span><i>&rarr;</i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="s3">
+      <div class="blob c" style="top:-120px;left:40%"></div>
+      <span class="num">03 / Embodiment</span>
+      <div class="inner duo duolab">
+        <div class="fx d1">
+          <div class="lab">
+            <figure class="lab-view">
+              <img id="labimg-em" src="assets/em-hero.jpg" alt="A mountain becomes a story about uncertainty." data-g="em" data-gi="0">
+              <figcaption><b id="labverb-em">Uncertainty</b><span id="labcap-em">A mountain becomes a story about uncertainty.</span></figcaption>
+            </figure>
+            <div class="lab-strip" id="labstrip-em" aria-label="All moments: hover to preview, click to open"></div>
+            <p class="curve-cap">16 experiments in capability. Hover to preview, click to open.</p>
+          </div>
+        </div>
+        <div>
+          <span class="tag fx">03 / Embodiment</span>
+          <h2 class="fx">Your body knows things your mind <span class="grad">hasn't discovered yet</span></h2>
+          <p class="lede fx d1">The bridge between Education and Outdoor Joy. Experiments in capability, not look-what-I-did stories: each experience becomes a story, the story meets the neuroscience, and the insight is yours to try.</p>
+          <div class="mech fx d1" aria-label="The embodiment mechanism">
+            <span class="mline"></span>
+              <span class="mnode"><b>Move</b><i></i><span>the body leads</span></span>
+              <span class="mnode"><b>Feel</b><i></i><span>notice the signal</span></span>
+              <span class="mnode"><b>Regulate</b><i></i><span>choose the response</span></span>
+              <span class="mnode"><b>Adapt</b><i></i><span>widen the range</span></span>
+          </div>
+          <div class="curve fx d2" style="margin-top:14px">
+            <svg viewBox="0 0 360 206" role="img" aria-label="The capability curve: from comfort through challenge and adaptation to growth">
+              <defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#19b3a6"/><stop offset="1" stop-color="#7a55e8"/></linearGradient></defs>
+              <line x1="36" y1="64" x2="344" y2="64" stroke="rgba(43,39,68,.07)" stroke-width="1"/>
+              <line x1="36" y1="124" x2="344" y2="124" stroke="rgba(43,39,68,.07)" stroke-width="1"/>
+              <line x1="36" y1="184" x2="344" y2="184" stroke="rgba(43,39,68,.2)" stroke-width="1"/>
+              <line x1="36" y1="20" x2="36" y2="184" stroke="rgba(43,39,68,.2)" stroke-width="1"/>
+              <text x="190" y="201" text-anchor="middle" fill="#8b86a3" font-size="9.5" letter-spacing="2.5" font-family="Figtree,sans-serif">EXPERIENCE OVER TIME</text>
+              <text x="18" y="102" text-anchor="middle" fill="#8b86a3" font-size="9.5" letter-spacing="2.5" font-family="Figtree,sans-serif" transform="rotate(-90 18 102)">CAPABILITY</text>
+              <path class="cpath" d="M56 162 C 100 162, 122 146, 150 124 C 178 102, 212 84, 244 70 C 276 56, 302 48, 324 44" fill="none" stroke="url(#cg)" stroke-width="3.5" stroke-linecap="round"/>
+              <circle class="cdot" cx="56" cy="162" r="5" fill="#19b3a6" style="transition-delay:.4s"/>
+              <circle class="cdot" cx="150" cy="124" r="5" fill="#3f9ccf" style="transition-delay:.9s"/>
+              <circle class="cdot" cx="244" cy="70" r="5" fill="#6a76e3" style="transition-delay:1.4s"/>
+              <circle class="cdot" cx="324" cy="44" r="5" fill="#7a55e8" style="transition-delay:1.9s"/>
+              <text class="clab" x="56" y="142" text-anchor="middle" fill="#2b2744" font-size="11" font-family="Figtree,sans-serif" style="transition-delay:.4s">Comfort</text>
+              <text class="clab" x="150" y="104" text-anchor="middle" fill="#2b2744" font-size="11" font-family="Figtree,sans-serif" style="transition-delay:.9s">Challenge</text>
+              <text class="clab" x="244" y="50" text-anchor="middle" fill="#2b2744" font-size="11" font-family="Figtree,sans-serif" style="transition-delay:1.4s">Adaptation</text>
+              <text class="clab" x="324" y="24" text-anchor="middle" fill="#2b2744" font-size="11" font-family="Figtree,sans-serif" style="transition-delay:1.9s">Growth</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="s4">
+      <div class="blob v" style="bottom:-160px;left:6%"></div>
+      <span class="num">04</span>
+      <div class="inner">
+        <span class="tag fx">04 / Insights</span>
+        <h2 class="fx">One library, <span class="grad">three worlds</span></h2>
+        <div class="filters fx d1" role="group" aria-label="Insight filters">
+          <button class="filter on" data-f="all">All</button>
+          <button class="filter" data-f="concepts">Concepts</button>
+          <button class="filter" data-f="transfer">Transfer</button>
+          <button class="filter" data-f="movement">Movement</button>
+          <button class="filter" data-f="outdoors">Outdoors</button>
+          <button class="filter" data-f="selfreg">Self-regulation</button>
+          <button class="filter" data-f="neuro">Neuroscience</button>
+          <button class="filter" data-f="capability">Capability</button>
+        </div>
+        <div class="scrollbox fx d1">
+          <ul class="ins-list">
+            <li data-tags="concepts transfer"><a href="#s1"><span class="ic ic-compass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path class="needle" d="m15 9-2.2 5-4.8 1.2 2.2-5z"/></svg></span><span class="t">The Trojan Horse: experience opens the door, concepts create meaning</span><span class="wh">Philosophy</span></a></li>
+            <li data-tags="concepts transfer movement"><a href="https://www.youtube.com/watch?v=UMsb0_iomHo" target="_blank" rel="noopener"><span class="ic ic-cam" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="12.5" height="11" rx="2.5"/><path d="M15.5 11 21 8.5v7L15.5 13z"/><circle class="rec" cx="7" cy="10.5" r="1.4"/></svg></span><span class="t">Conceptual Understanding in Physical Education, the webinar</span><span class="wh">Watch</span></a></li>
+            <li data-tags="capability selfreg"><a href="https://www.faria.org/curriculum-insights/curriculum-insights-issue2#p2" target="_blank" rel="noopener"><span class="ic ic-book" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.3-3.6-2-6-2v14c2.4 0 4.5.7 6 2 1.5-1.3 3.6-2 6-2V4c-2.4 0-4.5.7-6 2z"/><path d="M12 6v14"/></svg></span><span class="t">The Relationship Between Self-efficacy and Well-Being</span><span class="wh">Faria</span></a></li>
+            <li data-tags="concepts transfer"><a href="https://fitnwitpe.wordpress.com/2022/10/27/modern-literacies-module-4-reflections/" target="_blank" rel="noopener"><span class="ic ic-book" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.3-3.6-2-6-2v14c2.4 0 4.5.7 6 2 1.5-1.3 3.6-2 6-2V4c-2.4 0-4.5.7-6 2z"/><path d="M12 6v14"/></svg></span><span class="t">Modern Literacies: what happens when we infuse them into our courses?</span><span class="wh">Blog</span></a></li>
+            <li data-tags="movement capability"><a href="https://fitnwitpe.wordpress.com/2023/05/08/physical-education-today-a-student-perspective/" target="_blank" rel="noopener"><span class="ic ic-book" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.3-3.6-2-6-2v14c2.4 0 4.5.7 6 2 1.5-1.3 3.6-2 6-2V4c-2.4 0-4.5.7-6 2z"/><path d="M12 6v14"/></svg></span><span class="t">Physical Education Today: a student perspective</span><span class="wh">Blog</span></a></li>
+            <li data-tags="outdoors selfreg capability"><a href="#s2"><span class="ic ic-compass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path class="needle" d="m15 9-2.2 5-4.8 1.2 2.2-5z"/></svg></span><span class="t">The why of Outdoor Joy: the outdoors as a learning lab</span><span class="wh">Outdoor Joy</span></a></li>
+            <li data-tags="neuro selfreg movement"><a href="#s3"><span class="ic ic-compass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path class="needle" d="m15 9-2.2 5-4.8 1.2 2.2-5z"/></svg></span><span class="t">Experiments in capability: movement, stress and self-regulation</span><span class="wh">Embodiment</span></a></li>
+            <li data-tags="concepts transfer"><a href="https://fitnwitpe.wordpress.com/2020/10/26/conceptual-understanding-in-physical-education-2/" target="_blank" rel="noopener"><span class="ic ic-book" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.3-3.6-2-6-2v14c2.4 0 4.5.7 6 2 1.5-1.3 3.6-2 6-2V4c-2.4 0-4.5.7-6 2z"/><path d="M12 6v14"/></svg></span><span class="t">Conceptual Understanding in PE, with a shared Invasion Games storyboard</span><span class="wh">Blog</span></a></li>
+            <li data-tags="movement concepts"><a href="https://blogs.ibo.org/sharingpyp/2014/12/18/tech-and-pe-in-early-years/" target="_blank" rel="noopener"><span class="ic ic-book" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.3-3.6-2-6-2v14c2.4 0 4.5.7 6 2 1.5-1.3 3.6-2 6-2V4c-2.4 0-4.5.7-6 2z"/><path d="M12 6v14"/></svg></span><span class="t">Tech and PE in Early Years</span><span class="wh">IB blog</span></a></li>
+            <li data-tags="movement neuro"><a href="https://mihaicatrinar.wordpress.com/" target="_blank" rel="noopener"><span class="ic ic-book" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.3-3.6-2-6-2v14c2.4 0 4.5.7 6 2 1.5-1.3 3.6-2 6-2V4c-2.4 0-4.5.7-6 2z"/><path d="M12 6v14"/></svg></span><span class="t">Movement, endurance and recovery stories</span><span class="wh">Blog</span></a></li>
+            <li data-tags="concepts transfer capability"><a href="https://www.conceptualtransfer.com/courses/conceptual-transfer-in-physical-ed-health" target="_blank" rel="noopener"><span class="ic ic-course" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 5l9 4.5-9 4.5z"/><path d="M7 12.2v3.8c0 1.3 2.2 2.4 5 2.4s5-1.1 5-2.4v-3.8"/><path class="tassel" d="M21 9.5v5"/></svg></span><span class="t">Physical Education and Health Learning that Transfers, the 8-week course</span><span class="wh">Course</span></a></li>
+          </ul>
+        </div>
+        <div class="explore-row fx d2"><button class="explore wide" data-g="pr" data-gi="0"><span class="xst"><img src="assets/card-webinar.jpg" alt=""><img src="assets/sketchnote-conceptual-pe.jpg" alt=""><img src="assets/card-article.jpg" alt=""></span><span class="xtx"><b>Ideas shared in practice</b><span>posters, sessions, sketchnotes, writing</span></span><i>&rarr;</i></button></div>
+      </div>
+    </section>
+
+    <section class="scene" id="s5">
+      <div class="blob c" style="top:-100px;right:10%"></div>
+      <span class="num">05</span>
+      <div class="inner duo">
+        <div class="fx"><img class="portrait" src="assets/mihai-portrait.jpg" alt="Mihai Catrinar"></div>
+        <div>
+          <span class="tag fx">05 / About</span>
+          <h2 class="fx">One inquiry. <span class="grad">Three laboratories.</span></h2>
+          <p class="lede fx d1">Teacher, coach, runner, outdoor mentor, father. For 18 years, across International Baccalaureate (IB) schools in the Middle East, South-East Asia and Europe, these apparently separate lives kept converging around one question: what makes human beings more capable?</p>
+          <div class="cred fx d2">
+            <div><b>Today</b>Middle Years Programme (MYP) Assistant Head and Physical and Health Education (PHE) Teacher, Albanian College Tirana; Professional Learning Coach alongside Julie Stern</div>
+            <div><b>Learning</b>Harvard Business School Online; MA, University of Leeds; BA, National University of Physical Education and Sports, Bucharest</div>
+            <div><b>Community</b>Learning that Transfers endorsed educator; 100+ educators certified worldwide; IB workshop leader</div>
+            <div><b>Languages</b>Romanian, English, French</div>
+          </div>
+          <div class="explore-row fx d2"><button class="explore" data-recog><span class="xst"><img src="assets/card-sek-award.jpg" alt=""></span><span class="xtx"><b>Recognition and awards</b><span>SEK Award for Educational Innovation</span></span><i>&rarr;</i></button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="s6">
+      <div class="blob v" style="top:20%;left:30%"></div>
+      <span class="num">06 / Work</span>
+      <div class="inner" style="text-align:center">
+        <span class="tag fx">06 / Work with me</span>
+        <h2 class="fx d1" style="margin-left:auto;margin-right:auto">Which door is <span class="grad">yours</span>?</h2>
+        <p class="lede fx d2" style="margin:0 auto 24px">Tell me who you are and what you are trying to build, and we will design the experience together. Pick your door.</p>
+        <div class="doors fx d2" id="doors">
+          <button class="door-c" data-door="schools"><b>Schools</b><span>teachers, curriculum, coaching</span></button>
+          <button class="door-c" data-door="companies"><b>Companies</b><span>teams that become capable</span></button>
+          <button class="door-c" data-door="parents"><b>Parents and students</b><span>grow alongside your children</span></button>
+          <button class="door-c" data-door="groups"><b>Groups and individuals</b><span>mentoring and challenge</span></button>
+          <button class="door-c" data-door="speaking"><b>Speaking and coaching</b><span>keynotes, webinars, sessions</span></button>
+        </div>
+        <div class="door-panel" id="door-panel" hidden></div>
+        <div class="contacts fx d3">
+          <a class="cbtn solid" href="mailto:mihaicatrinar@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>mihaicatrinar@gmail.com</a>
+          <a class="cbtn" href="https://www.linkedin.com/in/mihaicatrinar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5"/><path d="M12 13c0-1.5 1-2.5 2.5-2.5S17 11.5 17 13v3"/></svg>LinkedIn</a>
+          <a class="cbtn" href="https://twitter.com/fitnwitpe" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 6.5c-.7.3-1.4.5-2.2.6a3.7 3.7 0 0 0 1.6-2 7.4 7.4 0 0 1-2.3.9A3.7 3.7 0 0 0 11.8 9 10.4 10.4 0 0 1 4.2 5.2a3.7 3.7 0 0 0 1.1 4.9c-.6 0-1.2-.2-1.7-.4 0 1.8 1.3 3.3 3 3.6-.5.2-1.1.2-1.7.1a3.7 3.7 0 0 0 3.4 2.6A7.4 7.4 0 0 1 3 17.6a10.4 10.4 0 0 0 5.6 1.6c6.8 0 10.5-5.6 10.5-10.5v-.5c.7-.5 1.3-1.1 1.9-1.7z"/></svg>Twitter</a>
+          <a class="cbtn" href="https://linktr.ee/mihaicatrinar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 8l-5-4M12 8l5-4M12 14l-5-4M12 14l5-4"/></svg>Linktree</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Mihai Catrinar. Experience &rarr; Insight &rarr; Capability &rarr; Transfer.</p>
+  <p><a href="https://linktr.ee/mihaicatrinar" target="_blank" rel="noopener">All my links</a></p>
+</footer>
+
+<nav class="rail" aria-label="Journey progress">
+  <div class="rail-top"><span>Your journey: <em id="stageword">Curious</em></span><span id="stagepct">0%</span></div>
+  <div class="line"><div class="fill" id="railfill"></div></div>
+  <div class="stops">
+    <a href="#s0" data-stop="s0" class="on">Start</a>
+    <a href="#s1" data-stop="s1">Education</a>
+    <a href="#s2" data-stop="s2">Outdoor Joy</a>
+    <a href="#s3" data-stop="s3">Embodiment</a>
+    <a href="#s4" data-stop="s4">Insights</a>
+    <a href="#s5" data-stop="s5">About</a>
+    <a href="#s6" data-stop="s6">Work</a>
+  </div>
+</nav>
+
+<div class="nl" id="nl">
+  <div class="nl-pop" id="nl-pop" role="dialog" aria-label="Stay connected with Mihai">
+    <p class="nl-t">Join the newsletter</p>
+    <p class="nl-p">New insights, experiences and stories from Mihai, straight to your inbox. Drop your email and you are in.</p>
+    <form class="nl-form" id="nl-form">
+      <input class="nl-mail" id="nl-mail" type="email" required placeholder="your@email.com" aria-label="Your email address">
+      <button class="nl-go" id="nl-go" type="submit">Join</button>
+    </form>
+    <p class="nl-done" id="nl-done">You are in! Your email app just opened, hit send and Mihai takes it from there.</p>
+  </div>
+  <button class="nl-fab" id="nl-fab" aria-label="Stay connected with Mihai" aria-haspopup="dialog">
+    <svg class="nl-face" id="nl-face" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      <path class="nl-arm nl-arm-b" d="M28 31q-7 2-8 9" fill="none" stroke="#2b2744" stroke-width="3.4" stroke-linecap="round"/>
+      <path class="nl-leg nl-leg-b" d="M31 42q-6 5-5 12" fill="none" stroke="#2b2744" stroke-width="3.6" stroke-linecap="round"/>
+      <path d="M32 28q-2 8-1 15" fill="none" stroke="var(--aur2)" stroke-width="9" stroke-linecap="round"/>
+      <path class="nl-leg nl-leg-f" d="M32 42q7 3 9 11" fill="none" stroke="#2b2744" stroke-width="3.6" stroke-linecap="round"/>
+      <path class="nl-arm nl-arm-f" d="M35 31q8-1 10-7" fill="none" stroke="#2b2744" stroke-width="3.4" stroke-linecap="round"/>
+      <circle cx="32" cy="16" r="10" fill="#ffd9a8" stroke="#2b2744" stroke-width="2"/>
+      <path d="M22.6 13.4q9.4-5.6 18.8 0" fill="none" stroke="var(--aur1)" stroke-width="4" stroke-linecap="round"/>
+      <path class="nl-tail" d="M41.8 12.2l6-2.6M42.2 14.6l6.4-.8" fill="none" stroke="var(--aur1)" stroke-width="2.4" stroke-linecap="round"/>
+      <circle class="nl-eye" cx="28.5" cy="16.5" r="1.8" fill="#2b2744"/>
+      <circle class="nl-eye" cx="35.5" cy="16.5" r="1.8" fill="#2b2744"/>
+      <path class="nl-star" d="M28.5 13.4l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z" fill="var(--aur1)"/>
+      <path class="nl-star" d="M35.5 13.4l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z" fill="var(--aur1)"/>
+      <circle cx="25" cy="20" r="1.5" fill="var(--aur2)" opacity=".55"/>
+      <circle cx="39" cy="20" r="1.5" fill="var(--aur2)" opacity=".55"/>
+      <path class="nl-mouth" d="M29 21.5q3 2.6 6 0" fill="none" stroke="#2b2744" stroke-width="2" stroke-linecap="round"/>
+      <path class="nl-mouth-big" d="M28.5 21q3.5 5 7 0z" fill="var(--aur1)" stroke="#2b2744" stroke-width="1.6" stroke-linejoin="round"/>
+      <g class="nl-vid"><rect x="41" y="23" width="12" height="9" rx="2" fill="#2b2744"/><path d="M53 25.5l5-2.2v8.4l-5-2.2z" fill="#2b2744"/><circle class="vrec" cx="44.5" cy="25.8" r="1.3" fill="#ff5d7a"/></g>
+    </svg>
+    <span class="nl-spark s1"></span><span class="nl-spark s2"></span><span class="nl-spark s3"></span><span class="nl-spark s4"></span><span class="nl-spark s5"></span><span class="nl-spark s6"></span>
+  </button>
+</div>
+
+<div class="gx" id="gx" role="dialog" aria-modal="true" aria-label="Photo gallery">
+  <div class="gx-panel">
+    <header class="gx-head">
+      <span id="gx-world"></span>
+      <span id="gx-count"></span>
+      <button id="gx-play" aria-label="Play the story">&#9654; Play</button>
+      <button id="gx-close" aria-label="Close gallery">&times;</button>
+    </header>
+    <div class="gx-stage">
+      <button id="gx-prev" aria-label="Previous photo">&larr;</button>
+      <figure>
+        <img id="gx-img" src="" alt="">
+        <figcaption><h3 id="gx-title"></h3><p id="gx-msg"></p></figcaption>
+      </figure>
+      <button id="gx-next" aria-label="Next photo">&rarr;</button>
+    </div>
+    <div class="gx-thumbs" id="gx-thumbs" aria-label="All photos"></div>
+  </div>
+</div>
+
+<div class="recog" id="recog" role="dialog" aria-modal="true" aria-label="Recognition">
+  <div class="recog-panel">
+    <button id="recog-close" aria-label="Close">&times;</button>
+    <p class="recog-k">Recognition</p>
+    <h3>SEK Award for Educational Innovation</h3>
+    <p class="recog-p">Best Work of Educational Innovation and Best Educational Practice in the Early Ages, awarded for pioneering mobile technology in Physical Education from the early years.</p>
+    <img src="assets/card-sek-award.jpg" alt="SEK Innovation Award certificate">
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var horizontal = false;
+
+  // Horizontal cinema (GSAP), with a clean vertical fallback
+  (function(){
+    var track = document.getElementById('track');
+    var wide = window.matchMedia('(min-width: 900px)').matches;
+    if (!reduce && wide && window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      horizontal = true;
+      document.documentElement.classList.add('hscroll');
+      var tween = gsap.to(track, {
+        x: function(){ return -(track.scrollWidth - window.innerWidth); },
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#hwrap',
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          end: function(){ return '+=' + (track.scrollWidth - window.innerWidth); }
+        }
+      });
+      // anchor links scroll to the right pinned position
+      document.querySelectorAll('a[href^="#s"]').forEach(function(a){
+        a.addEventListener('click', function(e){
+          var id = a.getAttribute('href').slice(1);
+          var sc = document.getElementById(id);
+          if (!sc) return;
+          e.preventDefault();
+          var st = tween.scrollTrigger;
+          var idx = Array.prototype.indexOf.call(track.children, sc);
+          var per = (track.scrollWidth - window.innerWidth) / (track.children.length - 1);
+          window.scrollTo({ top: st.start + idx * per, behavior: 'smooth' });
+        });
+      });
+    } else {
+      document.body.classList.add('vertical');
+    }
+  })();
+
+  // Progress rail + active stop
+  var fill = document.getElementById('railfill');
+  var stops = {};
+  document.querySelectorAll('[data-stop]').forEach(function(a){ stops[a.getAttribute('data-stop')] = a; });
+  var stagePct = document.getElementById('stagepct');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    fill.style.width = pct + '%';
+    fill.style.boxShadow = '0 0 ' + (4 + pct / 7) + 'px rgba(122,85,232,.85)';
+    if (stagePct) stagePct.textContent = Math.round(pct) + '%';
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  if ('IntersectionObserver' in window) {
+    var so = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && stops[e.target.id]) {
+          Object.keys(stops).forEach(function(k){ stops[k].classList.remove('on'); });
+          stops[e.target.id].classList.add('on');
+          var words = { s0: 'Curious', s1: 'Understanding', s2: 'Connected', s3: 'Regulated', s4: 'Informed', s5: 'Grounded', s6: 'Ready' };
+          var sw = document.getElementById('stageword');
+          if (sw && words[e.target.id]) sw.textContent = words[e.target.id];
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.scene').forEach(function(sc){ so.observe(sc); });
+  }
+
+  // Reveals (IntersectionObserver works for horizontal movement too)
+  var items = document.querySelectorAll('.fx');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  // Letter headings: staggered hero entrance, lift on hover, on every chapter title
+  var AUR1 = [25, 179, 166], AUR2 = [122, 85, 232];
+  function paintGrad(scope){
+    scope.querySelectorAll('.grad').forEach(function(g){
+      var ls = g.querySelectorAll('.ltr');
+      var n = Math.max(ls.length - 1, 1);
+      ls.forEach(function(sp, i){
+        var t = i / n;
+        var c = [0, 1, 2].map(function(k){ return Math.round(AUR1[k] + (AUR2[k] - AUR1[k]) * t); });
+        sp.style.color = 'rgb(' + c.join(',') + ')';
+      });
+      g.classList.add('split');
+    });
+  }
+  function splitEl(node){
+    Array.prototype.slice.call(node.childNodes).forEach(function(ch){
+      if (ch.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        ch.textContent.split(/(\s+)/).forEach(function(part){
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          var w = document.createElement('span');
+          w.className = 'wrd';
+          part.split('').forEach(function(c){
+            var sp = document.createElement('span');
+            sp.className = 'ltr';
+            sp.textContent = c;
+            w.appendChild(sp);
+          });
+          frag.appendChild(w);
+        });
+        node.replaceChild(frag, ch);
+      } else if (ch.nodeType === 1) {
+        splitEl(ch);
+      }
+    });
+  }
+  var hero = document.querySelector('.hero-h1');
+  if (hero) {
+    hero.classList.add('ltrs');
+    if (reduce) {
+      hero.classList.add('ready');
+    } else {
+      splitEl(hero);
+      paintGrad(hero);
+      var hls = hero.querySelectorAll('.ltr');
+      hls.forEach(function(sp, i){ sp.style.transitionDelay = (140 + i * 24) + 'ms'; });
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ hero.classList.add('ready'); }); });
+      setTimeout(function(){ hls.forEach(function(sp){ sp.style.transitionDelay = '0ms'; }); }, 140 + hls.length * 24 + 500);
+    }
+  }
+  if (!reduce) {
+    document.querySelectorAll('.scene h2').forEach(function(h){
+      h.classList.add('ltrs');
+      splitEl(h);
+      paintGrad(h);
+    });
+  }
+
+  // Cinematic copy: each chapter's paragraph fades in word by word, every time you arrive
+  (function(){
+    var ps = Array.prototype.slice.call(document.querySelectorAll('.scene .lede'));
+    if (!ps.length) return;
+    if (reduce) { ps.forEach(function(p){ p.classList.add('ready'); p.classList.add('cine'); }); return; }
+    ps.forEach(function(p){
+      var words = p.textContent.split(' ');
+      p.textContent = '';
+      words.forEach(function(wd, k){
+        var sp = document.createElement('span');
+        sp.className = 'lw';
+        sp.textContent = wd;
+        sp.style.setProperty('--d', (k * 34) + 'ms');
+        p.appendChild(sp);
+        p.appendChild(document.createTextNode(' '));
+      });
+      p.classList.add('ready');
+    });
+    if ('IntersectionObserver' in window) {
+      var rm = horizontal ? '0px -42% 0px -42%' : '-42% 0px -42% 0px';
+      var to = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ e.target.classList.toggle('cine', e.isIntersecting); });
+      }, { threshold: 0, rootMargin: rm });
+      ps.forEach(function(p){ to.observe(p); });
+    } else {
+      ps.forEach(function(p){ p.classList.add('cine'); });
+    }
+  })();
+
+  // Capability curve draws itself when it comes into view
+  (function(){
+    var c = document.querySelector('.curve');
+    if (!c) return;
+    if (reduce || !('IntersectionObserver' in window)) { c.classList.add('in'); return; }
+    var co = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { c.classList.add('in'); co.unobserve(c); } });
+    }, { threshold: 0.3 });
+    co.observe(c);
+  })();
+
+  // Insights filter
+  var filters = document.querySelectorAll('.filter');
+  var insRows = document.querySelectorAll('.ins-list li');
+  filters.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filters.forEach(function(b){ b.classList.remove('on'); });
+      btn.classList.add('on');
+      var f = btn.getAttribute('data-f');
+      insRows.forEach(function(li){
+        var show = f === 'all' || (li.getAttribute('data-tags') || '').split(' ').indexOf(f) !== -1;
+        li.classList.toggle('hide', !show);
+      });
+    });
+  });
+
+  // ---------- Newsletter buddy ----------
+  var nlRoot = document.getElementById('nl');
+  var nlFab = document.getElementById('nl-fab');
+  var nlPop = document.getElementById('nl-pop');
+  var nlDone = document.getElementById('nl-done');
+  function nlParty(){
+    nlFab.classList.remove('party');
+    void nlFab.offsetWidth;
+    nlFab.classList.add('party');
+    setTimeout(function(){ nlFab.classList.remove('party'); }, 1200);
+  }
+  if (!reduce) setInterval(function(){
+    if (!nlPop.classList.contains('open')) {
+      nlFab.classList.add('nudge');
+      setTimeout(function(){ nlFab.classList.remove('nudge'); }, 900);
+    }
+  }, 6000);
+  nlFab.addEventListener('click', function(){
+    var opening = !nlPop.classList.contains('open');
+    nlPop.classList.toggle('open', opening);
+    if (opening) {
+      nlParty();
+      var m = document.getElementById('nl-mail');
+      if (m) setTimeout(function(){ m.focus(); }, 320);
+    }
+  });
+  document.getElementById('nl-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var mail = document.getElementById('nl-mail').value.trim();
+    if (!mail) return;
+    window.location.href = 'mailto:mihaicatrinar@gmail.com?subject=' + encodeURIComponent('Newsletter signup') + '&body=' + encodeURIComponent('Hi Mihai, please add me to your newsletter: ' + mail);
+    nlRoot.classList.add('joined');
+    nlDone.classList.add('show');
+    nlParty();
+  });
+  document.addEventListener('click', function(e){
+    if (nlPop.classList.contains('open') && !nlRoot.contains(e.target)) nlPop.classList.remove('open');
+  });
+  document.querySelectorAll('.watchlink').forEach(function(el){
+    el.addEventListener('mouseenter', function(){
+      nlRoot.classList.add('filming');
+      nlFab.classList.add('nudge');
+      setTimeout(function(){ nlFab.classList.remove('nudge'); }, 900);
+    });
+    el.addEventListener('mouseleave', function(){ nlRoot.classList.remove('filming'); });
+  });
+
+  // ---------- Explorable galleries: Mihai's photos, each with its message ----------
+  var G = {
+    edu: { title: 'Education', sub: 'Learning that travels', items: [
+      ['ed-hero.jpg','A shared challenge','Relevant, meaningful experiences get learners through the door.'],
+      ['ed-agency.jpg','Learner agency','Experience opens the door: learners choose how to approach the problem.'],
+      ['ed-concepts.jpg','Making meaning','Inside the experience, concepts help learners make sense of what is happening.'],
+      ['ed-inquiry.jpg','Student inquiry','We change the context and ask: can you use what you understood somewhere else?'],
+      ['ed-capabilities.jpg','Student voice','Capabilities remain long after the unit ends.'],
+      ['ed-reflection.jpg','Six words','Reflection in the learner\u2019s own voice, six words at a time.'],
+      ['ed-pause.jpg','The pause','The pause after experience is where insight begins.'],
+      ['g-ed-explaining.jpg','Explaining understanding','Learners explaining their understanding to each other.'],
+      ['g-ed-authentic.jpg','Authentic thinking','Authentic student thinking helps refine understanding.'],
+      ['g-ed-similar.jpg','Choose the similar one','Acquire, connect, transfer: spotting the similar case.'],
+      ['g-ed-attainment.jpg','Concept attainment','Building the concept from examples, not from definitions.'],
+      ['g-ed-connections.jpg','Conceptual connections','Apparently separate ideas, actually connected.'],
+      ['g-ed-interdisciplinary.jpg','Across disciplines','Inquiry and interdisciplinary thinking.'],
+      ['g-ed-roles.jpg','Team dynamics','Roles, responsibility, decisions and team dynamics.'],
+      ['g-ed-changed.jpg','Changed understanding','Reflection that shows understanding has changed.'],
+      ['g-ed-remain.jpg','What remains','When the unit is over, the capability stays.'],
+      ['g-ed-problem.jpg','A problem worth solving','A problem worth solving gets everyone through the door.'],
+      ['g-ed-language.jpg','Conceptual language','A teaching environment that speaks in concepts.'],
+      ['g-ed-facilitator.jpg','The facilitator','The teacher as facilitator of meaning, not transmitter of content.'],
+      ['g-ed-support.jpg','Supporting learning','Support that builds independence, not dependence.'],
+      ['g-ed-case.jpg','Case study','Professional learning built on real classroom cases.'],
+      ['ed-coaching.jpg','Instructional coaching','Coaching conversations that move practice.'],
+      ['ed-facilitate.jpg','Facilitating','Designing and facilitating professional learning for educators.'],
+      ['ed-consulting.jpg','Beyond lessons','Curriculum design: strong evidence of planning beyond lessons.']
+    ]},
+    oj: { title: 'Outdoor Joy', sub: 'The learning lab', items: [
+      ['oj-hero.jpg','The canyon','The outdoors is not the destination. It is the learning lab.'],
+      ['oj-air.jpg','Air','Height, breath and perspective.'],
+      ['oj-earth.jpg','Earth','Human connection with the landscape.'],
+      ['oj-water.jpg','Water','Balance, flow and attention.'],
+      ['oj-challenge.jpg','Challenge','Real challenge, calibrated to the person in front of you.'],
+      ['oj-challenge-water.jpg','Into the water','Discovering what you can sustain.'],
+      ['oj-connection.jpg','Connection','Trust is built in shared effort.'],
+      ['oj-reflection.jpg','Reflection','The adventure ends. The reflection travels with us.'],
+      ['oj-pause.jpg','Pause','Stillness is part of the experience.'],
+      ['oj-curiosity.jpg','Curiosity','Curiosity grows where the trail ends.'],
+      ['g-oj-nature.jpg','With nature','Curiosity and connection with nature.'],
+      ['oj-students.jpg','Responsibility','Students taking real responsibility.'],
+      ['oj-companies.jpg','Collective capacity','From team building to collective capacity.'],
+      ['g-oj-capacity2.jpg','The team','Trust, connection, belonging, purpose.'],
+      ['oj-family.jpg','Family inside','Parents are invited into the experience.'],
+      ['oj-journey.jpg','The journey','Scale, uncertainty, and a journey together.'],
+      ['g-oj-journeyconn.jpg','Side by side','Journeys connect people.'],
+      ['g-oj-shared.jpg','Shared challenge','Close interaction and candid participation.'],
+      ['g-oj-topshared.jpg','Shared experience','What we learn about each other travels with us.'],
+      ['g-oj-community.jpg','Community','Belonging is built outdoors.'],
+      ['g-oj-agency.jpg','Agency','Challenge creates agency.'],
+      ['g-oj-experience.jpg','Experience','Experience, challenge, reflection, transfer.'],
+      ['oj-together.jpg','Meaning together','We make meaning together.'],
+      ['oj-travels.jpg','It travels','Learning travels with us.']
+    ]},
+    em: { title: 'Embodiment', sub: 'The body knows', items: [
+      ['em-hero.jpg','Uncertainty','A mountain becomes a story about uncertainty.'],
+      ['em-attention.jpg','Attention','Attention and adaptation, embodied.'],
+      ['g-em-attention2.jpg','Reading the terrain','Uncertainty trains attention.'],
+      ['em-effort.jpg','Effort','Regulating effort is a learnable skill.'],
+      ['g-em-effortadapt.jpg','Effort adapts','Push, recover, adapt.'],
+      ['em-cold.jpg','The cold','Cold becomes a story about stress and adaptation.'],
+      ['em-uncertainty.jpg','A problem to solve','Uncertainty is a problem to solve, not a threat.'],
+      ['em-balance.jpg','Commitment','Choosing and committing to a movement.'],
+      ['em-coordination.jpg','Generations','Posture and movement across generations: deliberate practice.'],
+      ['em-thinking.jpg','Embodied thinking','Connection and learning through movement.'],
+      ['g-em-everyday.jpg','Everyday practice','Embodied thinking as everyday practice.'],
+      ['g-em-adapt2.jpg','Adaptation','Attention and adaptation, learned through the body.'],
+      ['g-em-explosive.jpg','Explosive','Explosive movement, at scale.'],
+      ['g-em-trylearn.jpg','Try. Learn.','Movement challenge inside a learning relationship.'],
+      ['g-em-humour.jpg','Humour','Personality and humour belong in training.'],
+      ['em-pace.jpg','Someone else\u2019s pace','Adapting your pace to someone else.']
+    ]},
+    pr: { title: 'In practice', sub: 'Ideas shared with educators', items: [
+      ['card-webinar.jpg','The webinar','Time for Conceptual Understanding, hosted by 4 Generations 4 Education.'],
+      ['sketchnote-conceptual-pe.jpg','The sketchnote','Session sketchnote by Ania Cholewinska (@edu.ideas).'],
+      ['card-article.jpg','Published writing','The Relationship Between Self-efficacy and Well-Being, in Faria Curriculum Insights.'],
+      ['card-recess-duty.jpg','Recess Duty','Learning That Transfers, on the Recess Duty podcast.'],
+      ['card-pe-jobalike.jpg','PE Job Alike','Job-alike sessions for physical educators across the IB community.'],
+      ['card-fobisia.jpg','FOBISIA','Professional learning with the FOBISIA community.'],
+      ['card-ibex.jpg','IB EX','Collaboration across the IB community.'],
+      ['speaking-events.jpg','Selected events','Speaking, from conference stages to virtual rooms.'],
+      ['speaking-workshops.jpg','Workshops','Workshops that make the room move.']
+    ]}
+  };
+
+  var gx = document.getElementById('gx');
+  var gxImg = document.getElementById('gx-img');
+  var gxTitle = document.getElementById('gx-title');
+  var gxMsg = document.getElementById('gx-msg');
+  var gxWorld = document.getElementById('gx-world');
+  var gxCount = document.getElementById('gx-count');
+  var gxThumbs = document.getElementById('gx-thumbs');
+  var gxState = { w: null, i: 0 };
+  var gxPlay = document.getElementById('gx-play');
+  var gxPlayOn = false, gxPlayT = null;
+  function gxStop(){
+    gxPlayOn = false;
+    if (gxPlayT) { clearInterval(gxPlayT); gxPlayT = null; }
+    if (gxPlay) { gxPlay.classList.remove('on'); gxPlay.innerHTML = '&#9654; Play'; }
+    gxImg.classList.remove('kb');
+  }
+  function gxStart(){
+    gxPlayOn = true;
+    if (gxPlay) { gxPlay.classList.add('on'); gxPlay.innerHTML = '&#10073;&#10073; Pause'; }
+    gxShow(gxState.i);
+    gxPlayT = setInterval(function(){ gxShow(gxState.i + 1); }, 4200);
+  }
+  if (gxPlay) gxPlay.addEventListener('click', function(){ gxPlayOn ? gxStop() : gxStart(); });
+  function gxMsgWords(txt){
+    gxMsg.innerHTML = '';
+    txt.split(' ').forEach(function(wd, k){
+      var sp = document.createElement('span');
+      sp.className = 'w';
+      sp.textContent = wd;
+      sp.style.animationDelay = (140 + k * 65) + 'ms';
+      gxMsg.appendChild(sp);
+      gxMsg.appendChild(document.createTextNode(' '));
+    });
+  }
+
+  function gxRenderThumbs(w){
+    gxThumbs.innerHTML = '';
+    G[w].items.forEach(function(it, idx){
+      var b = document.createElement('button');
+      b.className = 'gx-th';
+      b.setAttribute('aria-label', it[1]);
+      var im = document.createElement('img');
+      im.src = 'assets/' + it[0];
+      im.alt = it[1];
+      im.loading = 'lazy';
+      b.appendChild(im);
+      b.addEventListener('click', function(){ gxStop(); gxShow(idx); });
+      if (window.matchMedia('(hover: hover)').matches) {
+        b.addEventListener('mouseenter', function(){ if (!gxPlayOn && idx !== gxState.i) gxShow(idx, true); });
+      }
+      gxThumbs.appendChild(b);
+    });
+  }
+  function gxShow(i, fast){
+    var w = gxState.w;
+    var items = G[w].items;
+    gxState.i = (i + items.length) % items.length;
+    var it = items[gxState.i];
+    var quoted = '\u201C' + it[2] + '\u201D';
+    gxImg.classList.add('swap');
+    gxImg.classList.remove('kb');
+    setTimeout(function(){
+      gxImg.src = 'assets/' + it[0];
+      gxImg.alt = it[1];
+      gxTitle.textContent = it[1];
+      if (reduce || fast) { gxMsg.textContent = quoted; } else { gxMsgWords(quoted); }
+      gxCount.textContent = (gxState.i + 1) + ' / ' + items.length;
+      gxImg.onload = function(){
+        gxImg.classList.remove('swap');
+        gxImg.classList.remove('kb');
+        if (gxPlayOn && !reduce) { void gxImg.offsetWidth; gxImg.classList.add('kb'); }
+      };
+    }, (reduce || fast) ? 0 : 180);
+    Array.from(gxThumbs.children).forEach(function(el, idx){
+      el.classList.toggle('on', idx === gxState.i);
+    });
+    var active = gxThumbs.children[gxState.i];
+    if (active && active.scrollIntoView) active.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
+  }
+  function gxOpen(w, i){
+    gxState.w = w;
+    gxWorld.textContent = G[w].title + ' / ' + G[w].sub;
+    gxRenderThumbs(w);
+    gx.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    gxShow(i || 0);
+  }
+  function gxClose(){
+    gxStop();
+    gx.classList.remove('open');
+    gxImg.src = '';
+    document.body.style.overflow = '';
+    gxState.w = null;
+  }
+  document.querySelectorAll('[data-g]').forEach(function(el){
+    el.addEventListener('click', function(ev){
+      ev.preventDefault();
+      gxOpen(el.getAttribute('data-g'), parseInt(el.getAttribute('data-gi') || '0', 10));
+    });
+  });
+  document.getElementById('gx-close').addEventListener('click', gxClose);
+  var gxTX = null;
+  gxImg.addEventListener('touchstart', function(e){ gxTX = e.changedTouches[0].clientX; }, { passive: true });
+  gxImg.addEventListener('touchend', function(e){
+    if (gxTX === null) return;
+    var dx = e.changedTouches[0].clientX - gxTX;
+    gxTX = null;
+    if (Math.abs(dx) > 42) { gxStop(); gxShow(gxState.i + (dx < 0 ? 1 : -1)); }
+  }, { passive: true });
+  document.getElementById('gx-prev').addEventListener('click', function(){ gxStop(); gxShow(gxState.i - 1); });
+  document.getElementById('gx-next').addEventListener('click', function(){ gxStop(); gxShow(gxState.i + 1); });
+  gx.addEventListener('click', function(e){ if (e.target === gx) gxClose(); });
+  document.addEventListener('keydown', function(e){
+    if (!gx.classList.contains('open')) {
+      if (e.key === 'Escape') { var rec = document.getElementById('recog'); if (rec) rec.classList.remove('open'), document.body.style.overflow = ''; }
+      return;
+    }
+    if (e.key === 'Escape') gxClose();
+    if (e.key === 'ArrowRight') gxShow(gxState.i + 1);
+    if (e.key === 'ArrowLeft') gxShow(gxState.i - 1);
+  });
+
+  // ---------- Recognition overlay (opened on demand, not on the page) ----------
+  var recog = document.getElementById('recog');
+  document.querySelectorAll('[data-recog]').forEach(function(el){
+    el.addEventListener('click', function(ev){
+      ev.preventDefault();
+      recog.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  document.getElementById('recog-close').addEventListener('click', function(){
+    recog.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  recog.addEventListener('click', function(e){ if (e.target === recog) { recog.classList.remove('open'); document.body.style.overflow = ''; } });
+
+  // ---------- One lab per world: the whole gallery in one panel ----------
+  var LABS = {};
+  function makeLab(world){
+    var img = document.getElementById('labimg-' + world);
+    var strip = document.getElementById('labstrip-' + world);
+    if (!img || !strip || !G[world]) return;
+    var verb = document.getElementById('labverb-' + world);
+    var cap = document.getElementById('labcap-' + world);
+    var items = G[world].items;
+    var ths = [];
+    function set(gi){
+      ths.forEach(function(x, k){ x.classList.toggle('on', k === gi); });
+      var it = items[gi];
+      img.classList.add('swap');
+      setTimeout(function(){
+        img.src = 'assets/' + it[0];
+        img.alt = it[2];
+        img.setAttribute('data-gi', gi);
+        verb.textContent = it[1];
+        cap.textContent = it[2];
+        img.onload = function(){ img.classList.remove('swap'); };
+      }, reduce ? 0 : 150);
+    }
+    var hoverable = window.matchMedia('(hover: hover)').matches;
+    items.forEach(function(it, gi){
+      var b = document.createElement('button');
+      b.className = 'lab-th' + (gi === 0 ? ' on' : '');
+      b.setAttribute('aria-label', it[1]);
+      var im = document.createElement('img');
+      im.src = 'assets/' + it[0];
+      im.alt = it[1];
+      im.loading = 'lazy';
+      b.appendChild(im);
+      strip.appendChild(b);
+      ths.push(b);
+      if (hoverable) b.addEventListener('mouseenter', function(){ set(gi); });
+      b.addEventListener('click', function(){ gxOpen(world, gi); });
+    });
+    function shuffle(){
+      for (var k = ths.length - 1; k > 0; k--) {
+        var j = Math.floor(Math.random() * (k + 1));
+        var tmp = ths[k]; ths[k] = ths[j]; ths[j] = tmp;
+      }
+      ths.forEach(function(b){ strip.appendChild(b); });
+    }
+    LABS[world] = { set: set, count: items.length, shuffle: shuffle };
+  }
+  makeLab('edu');
+  makeLab('oj');
+  makeLab('em');
+  Object.keys(LABS).forEach(function(w){
+    LABS[w].shuffle();
+    LABS[w].set(Math.floor(Math.random() * LABS[w].count));
+  });
+
+  // Fresh start on every visit: when you leave a chapter, its lab lands on a new random moment
+  (function(){
+    var map = { s1: 'edu', s2: 'oj', s3: 'em' };
+    if (!('IntersectionObserver' in window)) return;
+    var rm = horizontal ? '0px -42% 0px -42%' : '-42% 0px -42% 0px';
+    var ro = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var lab = LABS[map[e.target.id]];
+        if (!e.isIntersecting && lab) {
+          lab.shuffle();
+          lab.set(Math.floor(Math.random() * lab.count));
+        }
+      });
+    }, { threshold: 0, rootMargin: rm });
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) ro.observe(el);
+    });
+  })();
+
+  // ---------- Living diagrams: each world has its own moving mechanism ----------
+  // s3: the capability curve, a light climbs it and drives the stations
+  (function(){
+    var path = document.querySelector('#s3 .cpath');
+    if (!path || !path.getTotalLength) return;
+    var svg = path.ownerSVGElement;
+    var NS = 'http://www.w3.org/2000/svg';
+    var halo = document.createElementNS(NS, 'circle');
+    halo.setAttribute('r', '11');
+    halo.setAttribute('class', 'crun-halo');
+    svg.appendChild(halo);
+    var dot = document.createElementNS(NS, 'circle');
+    dot.setAttribute('r', '5.5');
+    dot.setAttribute('fill', '#2b2744');
+    dot.setAttribute('class', 'crun');
+    svg.appendChild(dot);
+    var nodes = document.querySelectorAll('#s3 .mech .mnode');
+    var L = path.getTotalLength();
+    function place(t){
+      var pt = path.getPointAtLength(t * L);
+      dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y);
+      halo.setAttribute('cx', pt.x); halo.setAttribute('cy', pt.y);
+    }
+    if (reduce) {
+      place(1);
+      nodes.forEach(function(n){ n.classList.add('live'); });
+      return;
+    }
+    var start = null;
+    function frame(ts){
+      if (!start) start = ts;
+      var t = ((ts - start) % 6400) / 6400;
+      place(t);
+      var stage = Math.min(3, Math.floor(t * 4));
+      nodes.forEach(function(n, k){ n.classList.toggle('live', k === stage); });
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+
+  // s1: the Trojan Horse run, a spark crosses the door, changes shape, and deposits a capability
+  (function(){
+    var svg = document.getElementById('doorSvg');
+    if (!svg) return;
+    var NS = 'http://www.w3.org/2000/svg';
+    var labels = svg.querySelectorAll('.db');
+    var halo = document.createElementNS(NS, 'circle');
+    halo.setAttribute('r', '10');
+    halo.setAttribute('cy', '70');
+    halo.setAttribute('class', 'crun-halo');
+    svg.appendChild(halo);
+    var dot = document.createElementNS(NS, 'rect');
+    dot.setAttribute('width', '12');
+    dot.setAttribute('height', '12');
+    dot.setAttribute('y', '64');
+    dot.setAttribute('fill', '#2b2744');
+    dot.setAttribute('class', 'crun');
+    svg.appendChild(dot);
+    var deposits = [];
+    function phaseOf(x){
+      if (x < 150) return 0;
+      if (x < 332) return 1;
+      if (x < 452) return 2;
+      return 3;
+    }
+    function setDot(x, ph){
+      dot.setAttribute('x', x - 6);
+      halo.setAttribute('cx', x);
+      dot.setAttribute('rx', ph === 0 ? 6 : (ph === 1 ? 3 : 1.5));
+      dot.setAttribute('transform', ph === 1 ? 'rotate(45 ' + x + ' 70)' : '');
+      labels.forEach(function(l, k){ l.setAttribute('fill', k === ph ? '#0f8f85' : '#2b2744'); });
+    }
+    function deposit(){
+      if (deposits.length >= 4) {
+        deposits.forEach(function(d){ svg.removeChild(d); });
+        deposits = [];
+      }
+      var c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', 458 + deposits.length * 12);
+      c.setAttribute('cy', '92');
+      c.setAttribute('r', '4');
+      c.setAttribute('fill', '#7a55e8');
+      svg.appendChild(c);
+      deposits.push(c);
+    }
+    if (reduce) { setDot(478, 3); return; }
+    var start = null, cycles = -1;
+    function frame(ts){
+      if (!start) start = ts;
+      var raw = (ts - start) / 5600;
+      var cyc = Math.floor(raw);
+      var t = raw - cyc;
+      if (cyc !== cycles) { cycles = cyc; if (cyc > 0) deposit(); }
+      var x = 30 + t * 448;
+      setDot(x, phaseOf(x));
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+
+  // s2: the outdoor loop, a light orbits the ring and lights each stage
+  (function(){
+    var svg = document.getElementById('loopSvg');
+    if (!svg) return;
+    var NS = 'http://www.w3.org/2000/svg';
+    var labels = svg.querySelectorAll('.lb');
+    var nodes = svg.querySelectorAll('.ln');
+    var halo = document.createElementNS(NS, 'circle');
+    halo.setAttribute('r', '10');
+    halo.setAttribute('class', 'crun-halo');
+    svg.appendChild(halo);
+    var dot = document.createElementNS(NS, 'circle');
+    dot.setAttribute('r', '5');
+    dot.setAttribute('fill', '#2b2744');
+    dot.setAttribute('class', 'crun');
+    svg.appendChild(dot);
+    var cx = 200, cy = 108, r = 66;
+    function place(t){
+      var a = t * Math.PI * 2 - Math.PI / 2;
+      var x = cx + r * Math.cos(a), y = cy + r * Math.sin(a);
+      dot.setAttribute('cx', x); dot.setAttribute('cy', y);
+      halo.setAttribute('cx', x); halo.setAttribute('cy', y);
+      var stage = Math.min(3, Math.floor(t * 4));
+      labels.forEach(function(l, k){ l.setAttribute('fill', k === stage ? '#0f8f85' : '#2b2744'); });
+      nodes.forEach(function(n, k){ n.classList.toggle('live', k === stage); });
+    }
+    if (reduce) { place(0.999); return; }
+    var start = null;
+    function frame(ts){
+      if (!start) start = ts;
+      place(((ts - start) % 7200) / 7200);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+
+  // ---------- Work doors: pick one, it opens as a puzzle ----------
+  (function(){
+    var doors = document.getElementById('doors');
+    var panel = document.getElementById('door-panel');
+    if (!doors || !panel) return;
+    var D = {
+      schools: ['For schools', ['IB workshops and professional learning for your teachers', 'Curriculum design and consulting, from single units to whole programmes', 'Instructional coaching that moves classroom practice'], 'School inquiry'],
+      companies: ['For companies', ['Outdoor experiences that turn team building into collective capacity', 'Challenge, reflection and transfer, designed for your team', 'From one-day experiences to seasonal programmes'], 'Company inquiry'],
+      parents: ['For parents and students', ['Outdoor Joy experiences where parents join, not watch', 'Mentoring for children and teenagers, built on real challenge', 'Growth that travels back home'], 'Parent and student inquiry'],
+      groups: ['For groups and individuals', ['Seasonal Air, Earth and Water experiences for small groups', 'Individual mentoring and movement coaching', 'Calibrated challenge, honest reflection'], 'Group or individual inquiry'],
+      speaking: ['Speaking and coaching', ['Keynotes and webinars on learning that transfers', 'PE job-alikes and community sessions worldwide', 'From FOBISIA to IB EX collaborations'], 'Speaking or coaching']
+    };
+    var btns = doors.querySelectorAll('.door-c');
+    btns.forEach(function(b, k){ b.style.setProperty('--d', (k * 55) + 'ms'); });
+    function openDoor(key){
+      var d = D[key];
+      if (!d) return;
+      doors.classList.add('away');
+      setTimeout(function(){
+        doors.style.display = 'none';
+        panel.innerHTML = '';
+        var h = document.createElement('h3');
+        h.className = 'pz';
+        h.textContent = d[0];
+        panel.appendChild(h);
+        var ul = document.createElement('ul');
+        d[1].forEach(function(txt){
+          var li = document.createElement('li');
+          li.className = 'pz';
+          li.textContent = txt;
+          ul.appendChild(li);
+        });
+        panel.appendChild(ul);
+        var act = document.createElement('div');
+        act.className = 'door-actions pz';
+        var mail = document.createElement('a');
+        mail.className = 'door-mail';
+        mail.href = 'mailto:mihaicatrinar@gmail.com?subject=' + encodeURIComponent(d[2]);
+        mail.textContent = 'Email Mihai about this';
+        var back = document.createElement('button');
+        back.className = 'door-back';
+        back.textContent = 'Back to the doors';
+        back.addEventListener('click', closeDoor);
+        act.appendChild(mail);
+        act.appendChild(back);
+        panel.appendChild(act);
+        var pieces = panel.querySelectorAll('.pz');
+        pieces.forEach(function(p, k){
+          p.style.setProperty('--d', (120 + k * 90) + 'ms');
+          p.style.setProperty('--dx', ((k % 2 ? 1 : -1) * (18 + k * 6)) + 'px');
+          p.style.setProperty('--dy', (14 + (k % 3) * 8) + 'px');
+          p.style.setProperty('--r', ((k % 2 ? 1 : -1) * 2.5) + 'deg');
+        });
+        panel.hidden = false;
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ panel.classList.add('in'); }); });
+      }, reduce ? 0 : 380);
+    }
+    function closeDoor(){
+      panel.classList.remove('in');
+      panel.hidden = true;
+      doors.style.display = '';
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ doors.classList.remove('away'); }); });
+    }
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){ openDoor(b.getAttribute('data-door')); });
+    });
+  })();
+</script>
+
+</body>
+</html>
